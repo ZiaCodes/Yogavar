@@ -4,6 +4,7 @@ import { AiOutlineLogin } from "react-icons/ai";
 
 import heroImage from '../../assets/img/vertical.png'
 import Footer from "../../components/Footer/Footer";
+import CustomLink from "../../components/CustomLink";
 
 const FieldStyle = {
   color: "crimson",
@@ -29,7 +30,9 @@ const Login = () => {
             <input type="password" name="password" placeholder="*********" />
           </div>
           <div className="useful-links">
-            <p>Don't have?Register</p>
+            <CustomLink to='/register'>
+              Don't have?Register
+            </CustomLink>
           </div>
           <div className="btn">
             <button className="login" type="submit">
