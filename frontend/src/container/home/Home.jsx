@@ -233,7 +233,7 @@ const Home = () => {
       </div>
 
       <div className="ending-quote">
-        <p style={{fontWeight:'bold',padding:'0 0 10px'}}>YOGA INTERNATIONAL MEMBERSHIP INCLUDES</p>
+        <p style={{fontWeight:'bold',padding:'0 0 10px'}}>YOGAVAR MEMBERSHIP INCLUDES</p>
       </div>
 
 
