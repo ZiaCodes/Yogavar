@@ -1,0 +1,11 @@
+{
+  "name": "yoga_classes",
+  "version": "1.0.0",
+  "description": "yoga classes where you can enroll yourself for a month as well as you can schedule a class for a particular date and time",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ZiaCodes",
+  "license": "ISC"
+}
