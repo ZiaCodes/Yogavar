@@ -11,7 +11,8 @@
   }
   
   .nav-bar {
-    background-color: rgb(0, 0, 0);
+    background-color: #000;
+    backdrop-filter: blur(5px);
     padding: 10px;
     width: 100%;
     height: 40px;
@@ -377,6 +378,10 @@
     font-size: 15px;
     font-weight: lighter;
   }
+  .ending-quote > .ending-quote-bold {
+    font-weight:bold;
+    padding: 0 0 10px;
+  }
   .yoga-poster{
     display: flex;
     justify-content: center;
@@ -461,8 +466,8 @@
     box-shadow: 5px 5px 15px #0000005d;
     border-radius: 8px;
     padding: 20px;
-    width: 200px;
-    height: 240px;
+    width: 150px;
+    height: 150px;
     transition: 0.2s all;
     display: flex;
     flex-direction: column;
@@ -471,11 +476,16 @@
     background-color: #ffffff;
   }
   .card-poster-circle > img {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid crimson;
+    border: 1px solid rgba(0, 0, 0, 0.399);
+    transition: 0.5s all;
+  }
+  .card-poster-circle > img:hover{
+    transform: scale(0.90);
+    border: none;
   }
   .title-card-circle{
     font-weight: lighter;

@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "title":"YOGA PRACTICES",
+        "Mentor_name":"Dianne Bondy",
+        "Count":"3000+",
+        "mentorImg": "https://basicmodels.com.sg/wp-content/uploads/2019/06/AIMEE_052-scaled.jpg"  
+    },
+    {
+        "id": 2,
+        "title":"MEDITATION",
+        "Count":"1000+",
+        "Mentor_name":"Luke Ketterhagan",
+        "mentorImg": "https://cdn.mos.cms.futurecdn.net/7UmhdacgKWk9gLheGHNjNe-415-80.jpg"  
+    },
+    {
+        "id": 3,
+        "title":"PRANAYAMA PRACTICES",
+        "Mentor_name":"Amy Ippoliti",
+        "Count":"7000+",
+        "mentorImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUsu4uvqg1Hyipz46gAhDZncZdYGKX1wj9mFd8pEEYQqtjKZQj-9qv6nHlQDGmCdiaXzc&usqp=CAU"  
+    },
+    {
+        "id": 4,
+        "title":"ARTICLES",
+        "Count":"2700+",
+        "Mentor_name":"Oneika Mays",
+        "mentorImg": "https://img.huffingtonpost.com/asset/5e543c25230000520939c2c3.jpeg?cache=CjTYKi66vw&ops=crop_0_0_4000_3703%2Cscalefit_720_noupscale"  
+    },
+    {
+        "id": 5,
+        "title":"COURSES",
+        "Count":"300+",
+        "Mentor_name":"Ekta Kanu",
+        "mentorImg": "https://ektakanu.vercel.app/img/2.jpg"  
+    }
+]

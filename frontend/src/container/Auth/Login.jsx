@@ -4,7 +4,7 @@ import { AiOutlineLogin } from "react-icons/ai";
 
 import heroImage from '../../assets/img/vertical.png'
 import Footer from "../../components/Footer/Footer";
-import CustomLink from "../../components/CustomLink";
+import CustomLink from "../../components/utils/CustomLink";
 
 const FieldStyle = {
   color: "crimson",

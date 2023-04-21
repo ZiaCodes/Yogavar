@@ -6,11 +6,11 @@ import {RiCustomerService2Fill} from 'react-icons/ri'
 
 import { useState } from "react";
 
-import CustomLink from "../CustomLink";
+import CustomLink from "../utils/CustomLink";
 
 
 const Nav = () => {
-  const [showNavigation,setShownavigation] = useState(false);
+  const [showNavigation,setShownavigation] = useState(true);
   return (
     <>
       <div className="nav-bar">
