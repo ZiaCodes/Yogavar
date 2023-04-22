@@ -6,6 +6,7 @@ import {RiCustomerService2Fill} from 'react-icons/ri'
 import {MdOutlineWbSunny} from 'react-icons/md'
 import {FiMoon} from 'react-icons/fi'
 import {VscColorMode} from 'react-icons/vsc'
+import {AiFillHome} from 'react-icons/ai'
 
 import { useState } from "react";
 
@@ -34,6 +35,11 @@ const Nav = () => {
               <ul>
                 <li className="drop-theme">
                 <div className="theme">
+
+                  <CustomLink to="/">
+                  <AiFillHome/> Home
+                  </CustomLink>
+
                   <CustomLink to="/register">
                   <BsCalendarPlusFill/> Booking
                   </CustomLink> 
