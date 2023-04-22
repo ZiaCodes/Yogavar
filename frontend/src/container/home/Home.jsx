@@ -9,12 +9,12 @@ import Heading from '../../components/Heading/Heading'
 import Benefits from '../../components/utils/Benefits'
 import MentorCard from '../../components/utils/MentorCard';
 import MembershipInclude from '../../components/utils/MembershipInclude'
-import DesktopView from '../../components/utils/DesktopView'
+import Table from '../../components/Table/Table'
+
 
 const Home = () => {  
   return (
     <>
-    <DesktopView/>
     <div className="Wrapper">
       <div className="mobile-view">
       <div className="yoga-poster">
@@ -128,6 +128,8 @@ const Home = () => {
         <p className='ending-quote-bold'>READY TO GET STARTED?</p>
         <p>Join today and get a full year of Yogavar membership for $99.00/year</p>
       </div>
+
+      <Table/>
 
       <div className="ending-quote">
         <p className='ending-quote-bold'>YOGAVAR MEMBERSHIP INCLUDES</p>

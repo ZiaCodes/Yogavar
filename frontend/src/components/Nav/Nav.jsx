@@ -1,8 +1,11 @@
-import { RxAvatar } from "react-icons/rx";
+import { GiHamburgerMenu } from "react-icons/gi";
 import {TbYoga} from 'react-icons/tb'
 import {BsCalendarPlusFill} from 'react-icons/bs'
 import {BiMessageSquareDetail} from 'react-icons/bi'
 import {RiCustomerService2Fill} from 'react-icons/ri'
+import {MdOutlineWbSunny} from 'react-icons/md'
+import {FiMoon} from 'react-icons/fi'
+import {VscColorMode} from 'react-icons/vsc'
 
 import { useState } from "react";
 
@@ -10,13 +13,13 @@ import CustomLink from "../utils/CustomLink";
 
 
 const Nav = () => {
-  const [showNavigation,setShownavigation] = useState(true);
+  const [showNavigation,setShownavigation] = useState(false);
   return (
     <>
       <div className="nav-bar">
         <div className="logo">
           <CustomLink to="/">
-          <TbYoga/>Yo<span>Gavar</span>
+          <span><TbYoga/> YogaGavar</span>
           </CustomLink>
         </div>
 
@@ -24,28 +27,36 @@ const Nav = () => {
           <ul>
             <li>
               <CustomLink>
-                <RxAvatar className="profile-menu" onClick={()=> setShownavigation(!showNavigation)} />
+                <GiHamburgerMenu className="profile-menu" onClick={()=> setShownavigation(!showNavigation)} />
               </CustomLink>
             </li>
             { showNavigation && <div className="hidden">
               <ul>
-                <li className="drop-down">
+                <li className="drop-theme">
+                <div className="theme">
                   <CustomLink to="/register">
-                  <BsCalendarPlusFill/> Book your slot
+                  <BsCalendarPlusFill/> Booking
                   </CustomLink> 
-                </li>
-                <li className="drop-down">
+
                   <CustomLink to="/about">
-                  <BiMessageSquareDetail/>
-                  About
+                  <BiMessageSquareDetail/> About
                   </CustomLink>
-                </li>
-                <li className="drop-down">
+
                   <CustomLink to="/contact">
-                  <RiCustomerService2Fill/>
-                   Customer care
+                  <RiCustomerService2Fill/> Contact
                   </CustomLink>
+
+                  </div>
                 </li>
+ 
+                <li className="drop-theme">
+                  <div className="theme">
+                    <p><MdOutlineWbSunny/></p>
+                    <p><FiMoon/></p>
+                    <p><VscColorMode/></p>
+                  </div>
+                </li>
+
               </ul>
             </div>}
           </ul>
