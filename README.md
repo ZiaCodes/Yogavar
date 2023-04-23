@@ -2,15 +2,15 @@
 <br />
 <p align="center">
   <a href="#">
-    <img src="https://miro.medium.com/max/440/1*J3G3akaMpUOLegw0p0qthA.png" alt="Logo" width="250px">
+    <img src="https://yogavar.vercel.app/static/media/logo.33575fd7eb93d1bc64fb.png" alt="Logo" width="250px">
   </a>
   </p>
 
   <p align="center">
-    Rest Apis for <b>Sign-In , Sign-Up</b>, <b>OTP</b> ,<b> Email verification </b>,<b> Forget  password </b> and more ..
+    <b>Yogavar</b> offers a powerful solution for every facet of your life - from physical wellness to emotional well-being, as well as guidance on living a fulfilling and meaningful life.
     <br />
     <br />
-    <a href="#">View Demo</a>
+    <a href="https://yogavar.vercel.app/">View Demo</a>
     ·
     <a href="#">Report Bug</a>
     ·
@@ -21,17 +21,54 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Here's why you should use this template to minimize your time.
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a template from scratch
-* You should element DRY principles to the rest of your life :smile:
+Here's why you should use yogavar.
+* For over 30 years we’ve been leading people like you to the best yoga classes and teachers in the world so you can experience the transformational health benefits of yoga.
 
-Of course, no one template will serve all projects since your needs may be different. 
-So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. 
+* <b>Yogavar</b> offers a powerful solution for every facet of your life - from physical wellness to emotional well-being, as well as guidance on living a fulfilling and meaningful life.
+
+and we are constantly be adding more features in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. 
+
+
+## Demo shots
+
+<p align="center">
+  <a href="#">
+    <img src="./public/screenshot/17.png" alt="sc0" width="200px">
+  </a>
+  <a href="#">
+    <img src="./public/screenshot/11.png" alt="sc" width="200px">
+  </a>
+  <a href="#">
+    <img src="./public/screenshot/12.png" alt="sc" width="200px">
+  </a>
+  <a href="#">
+    <img src="./public/screenshot/13.png" alt="sc" width="200px">
+  </a>
+</p>
+
+<p align="center">
+  <a href="#">
+    <img src="./public/screenshot/14.png" alt="sc" width="200px">
+  </a>
+  <a href="#">
+    <img src="./public/screenshot/15.png" alt="sc" width="200px">
+  </a>
+  <a href="#">
+    <img src="./public/screenshot/16.png" alt="sc" width="200px">
+  </a>
+
+</p>
+
 
 
 ### Built With
 
+#### Frontend built with
+* [Reactjs]() - javaScript runtime enviroment
+* [axios]() - minimalist web framework for Node.js
+* [react-icons]() - for hashing password and tokens
+
+#### Backend built with
 * [Nodejs]() - javaScript runtime enviroment
 * [ExpressJs]() - minimalist web framework for Node.js
 * [bcrypt]() - for hashing password and tokens
@@ -43,8 +80,8 @@ So I'll be adding more in the near future. You may also suggest changes by forki
 * [morgan]() - HTTP request logger middleware for node.js
 * [nodemailer]() - for sending emails and Otp to users.
 
-### Tools You can use to test the Rest Apis
- *[POTMAN]()
+### Tools You can use to test the backend Apis
+ * [POTMAN]()
  
  ### Different Routes you can use 
  
