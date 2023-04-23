@@ -1,21 +1,21 @@
 import React from 'react'
 import heroPoster1 from '../../assets/img/hero-poster.png'
 import heroPoster2 from '../../assets/img/hero-poster-2.png'
-import Footer from '../../components/Footer/Footer'
-import CustomLink from '../../components/utils/CustomLink'
+import Footer from '../../components/Misc/Form/Footer'
+import CustomLink from '../../components/Misc/CustomLink'
 import imgUrl from '../../utils/media'
-import CardHolder from '../../components/Card/CardHolder'
-import Heading from '../../components/Heading/Heading'
-import Benefits from '../../components/utils/Benefits'
-import MentorCard from '../../components/utils/MentorCard';
-import MembershipInclude from '../../components/utils/MembershipInclude'
-import Table from '../../components/Table/Table'
+import CardHolder from '../../components/Misc/Card/CardHolder'
+import Heading from '../../components/Misc/Form/Heading'
+import Benefits from '../../components/Misc/Benefits'
+import MentorCard from '../../components/Misc/MentorCard';
+import MembershipInclude from '../../components/Misc/MembershipInclude'
+import Table from '../../components/Misc/Form/Table'
 
 
 const Home = () => {  
   return (
     <>
-    <div className="Wrapper">
+    <div  className="Wrapper">
       <div className="mobile-view">
       <div className="yoga-poster">
         <img src={heroPoster1} alt='poster'/>
@@ -58,7 +58,7 @@ const Home = () => {
       <div className="yoga-resources">
         <div className="yog-resources-container">
           <Heading>
-            <p style={{fontWeight:'bold',padding:'0 0 10px'}}>
+            <p className='ending-quote-bold'>
               ENGAGING AND CONVENIENT ONLINE YOGA CLASSES
             </p>
             <p>
@@ -80,7 +80,7 @@ const Home = () => {
             </p>
             <div className="start-your-subscription">
                 <p>
-                  <CustomLink to="/register">
+                  <CustomLink to="/auth/signin">
                   Book Your Slot
                   </CustomLink> 
                   </p>
@@ -143,7 +143,7 @@ const Home = () => {
           START YOUR JOURNEY TO WELL-BEING AND TRANSFORMATION NOW!
         </p>
         <div className="start-your-subscription">
-          <CustomLink to="/register">
+          <CustomLink to="/auth/signin">
             Book Your Slot
           </CustomLink> 
         </div>

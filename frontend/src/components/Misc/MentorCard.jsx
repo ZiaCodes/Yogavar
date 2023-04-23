@@ -1,6 +1,6 @@
 import React from 'react'
 import mentorData from '../../utils/resources.json'
-import Mentor from '../utils/Mentor'
+import Mentor from '../../components/Misc/Mentor'
 
 const PosterContainer = () => {
   return (

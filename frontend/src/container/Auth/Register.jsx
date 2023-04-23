@@ -1,68 +1,111 @@
-import { FaUserCircle } from "react-icons/fa";
-import { AiFillLock } from "react-icons/ai";
-import { MdAlternateEmail } from "react-icons/md";
-import { AiOutlineLogin } from "react-icons/ai";
-import {FaMobile} from 'react-icons/fa'
-import heroImage from '../../assets/img/vertical.png'
-import Footer from "../../components/Footer/Footer";
-import CustomLink from '../../components/utils/CustomLink'
+import React, {useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import heroImage from '../../assets/logo.svg'
+import {isValidEmail} from '../../utils/helper'
+import {createUser} from '../../apis/auth'
+import Heading from '../../components/Misc/Form/Heading';
+import InputField from '../../components/Misc/Form/InputField';
+import SubmitBtn from '../../components/Misc/Form/SubmitBtn';
+import CustomLink from '../../components/Misc/CustomLink';
+import {useNotification} from '../../hooks/index'
 
-const FieldStyle = {
-    color: "crimson",
-    fontSize: "20px",
-    padding: "5px",
-    fontWeight: "bolder"
-  };
+
+const validateUserInfo = ({name,email,password}) =>{
+
+    const isValidName = /^[a-z A-Z]+$/
+
+    if(!name.trim()) return {ok:false,error:'Name is missing!'}
+    if(!isValidName.test(name)) return {ok:false, error:'Invalid name!'}
+
+    if(!email.trim()) return {ok:false, error:'Email is missing!'}
+    if(!isValidEmail(email)) return {ok:false, error:'Invalid Email'}
+
+    if(!password.trim()) return {ok:false, error:'Password is missing!'}
+    if(password.length < 8) return {ok:false, error:'Password must be 8 character long!'}
+
+    return {ok:true}
+}
 
 const Register = () => {
+
+  const navigate = useNavigate();
+  const { updateNotification } = useNotification();
+
+  const [userInfo,setUserinfo] = useState({
+    name:"",
+    email:"",
+    password:""
+  })
+
+  const handleChange = ({target})=>{
+    const {value,name} = target;
+    setUserinfo({...userInfo,[name]:value});
+  }
+
+  const handleSubmit = async(e) =>{
+    e.preventDefault()
+    console.log(userInfo);
+    const {ok, error} = validateUserInfo(userInfo)
+
+    if(!ok) return updateNotification("error",error);
+
+    const response = await createUser(userInfo);
+    if(response.error) return updateNotification("error",response.error);
+
+    navigate('/auth/verification',{
+      state:{ user: response.user },
+      replace:true,
+    });
+  }
+
+  const {name, email, password} = userInfo;
+
   return (
     <>
-    <div className="container">
-      <div className="heroImage">
-          <img src={heroImage} alt="register" />
-        </div>
+    <div className="heroImage">
+      <img src={heroImage} alt="register" />
+    </div>
 
-        <div className="FormCard register-form">
-          <div className="title">
-            <AiOutlineLogin style={{ transform: "rotate(180deg)" }} />{" "}
-            <p>Register</p>
-          </div>
-          <div className="inputField">
-            <FaUserCircle style={FieldStyle} />
-            <input type="text" name="name" placeholder="Name" />
-          </div>
+    <form onSubmit={handleSubmit} className="container">
 
-          <div className="inputField">
-            <MdAlternateEmail style={FieldStyle} />
-            <input type="email" name="email" placeholder="Email" />
-          </div>
+      <Heading>
+        <h3 style={{color:'#fff'}}>Register Form</h3>
+      </Heading>
+      
+      <InputField
+          value={name}
+          onChange={handleChange}
+          name="name"
+          placeholder='john Doe'
+      />
 
-          <div className="inputField">
-            <FaMobile style={FieldStyle} />
-            <input type="text" name="number" placeholder="Mobile Number" />
-          </div>
-          <div className="inputField">
-            <AiFillLock style={FieldStyle} />
-            <input type="password" name="password" placeholder="*********" />
-          </div>
-          <div className="inputField">
-            <AiFillLock style={FieldStyle} />
-            <input type="password" name="password" placeholder="*********" />
-          </div>
-          <div className="useful-links">
-            <CustomLink to="/login">
-            Already have?LogIn
-            </CustomLink>
-          </div>
-          <div className="btn">
-            <button className="register" type="submit">
-              Register
-            </button>
-          </div>
-        </div>
-      </div>
+      <InputField 
+          value={email}
+          onChange={handleChange}
+          name="email"
+          placeholder='john@gmail.com'
+      />
 
-      <Footer/>
+      <InputField 
+          value={password}
+          onChange={handleChange}
+          name="password"
+          placeholder='********'
+          type="password"
+      />
+
+    <SubmitBtn value="Register"/>
+    
+    <div className='useful-links'>
+      <CustomLink to="/auth/forget-password">
+        Forget Password
+      </CustomLink>
+      <CustomLink to="/auth/signin">
+        Sign In
+      </CustomLink>
+    </div>
+
+    </form>
     </>
 
   )

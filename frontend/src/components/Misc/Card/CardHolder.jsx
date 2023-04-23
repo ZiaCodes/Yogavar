@@ -1,5 +1,5 @@
 import React from 'react'
-import data from '../../utils/media'
+import data from '../../../utils/media'
 import Card from './Card'
 const CardHolder = () => {
   return (

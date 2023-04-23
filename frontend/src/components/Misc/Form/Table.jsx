@@ -5,6 +5,7 @@ const Table = () => {
     <div className="wrapper">
         <table>
 
+            <thead>
             <tr>
                 <th>Plus applicable tax</th>
                 <th>12 months of membership for the price of 9</th>
@@ -16,7 +17,9 @@ const Table = () => {
                 <th>Unlimited access to 300+ courses and challenges to help your journey</th>
                 <th>Discount on select trainings</th>
             </tr>
+            </thead>
 
+            <tbody>
             <tr className='monthly'>
                 <td className='price' >$19.99</td>
                 <td data-cell="Plus applicable tax"></td>
@@ -42,6 +45,7 @@ const Table = () => {
                 <td data-cell="Unlimited access to 300+ courses and challenges to help your journey"></td>
                 <td data-cell="Discount ">20%</td>
             </tr>
+            </tbody>
 
 
 

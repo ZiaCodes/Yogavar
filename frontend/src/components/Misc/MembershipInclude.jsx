@@ -1,5 +1,5 @@
 import React from 'react'
-import membershipData from '../../utils/resources.json';
+import membershipData from '../../utils/resources';
 import MembershipIncludeCard from './MembershipIncludeCard';
 
 const MembershipInclude = () => {

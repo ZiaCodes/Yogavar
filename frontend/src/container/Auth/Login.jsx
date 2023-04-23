@@ -1,54 +1,93 @@
-import { FaUserCircle } from "react-icons/fa";
-import { AiFillLock } from "react-icons/ai";
-import { AiOutlineLogin } from "react-icons/ai";
+import React, { useEffect, useState } from 'react'
+import heroImage from '../../assets/logo.svg'
+import { isValidEmail } from '../../utils/helper';
+import { useNavigate } from 'react-router-dom';
+import Heading from '../../components/Misc/Form/Heading';
+import InputField from '../../components/Misc/Form/InputField';
+import SubmitBtn from '../../components/Misc/Form/SubmitBtn';
+import CustomLink from '../../components/Misc/CustomLink';
+import {useNotification} from '../../hooks/index'
+import { signInUser } from '../../apis/auth';
 
-import heroImage from '../../assets/img/vertical.png'
-import Footer from "../../components/Footer/Footer";
-import CustomLink from "../../components/utils/CustomLink";
+const validateUserInfo = ({email,password}) =>{
 
-const FieldStyle = {
-  color: "crimson",
-  fontSize: "20px",
-  padding: "5px",
-  fontWeight: "bolder"
-};
+  if(!email.trim()) return {ok:false, error:'Email is missing!'}
+  if(!isValidEmail(email)) return {ok:false, error:'Invalid Email'}
+
+  if(!password.trim()) return {ok:false, error:'Password is missing!'}
+  if(password.length < 8) return {ok:false, error:'Password must be 8 character long!'}
+
+  return {ok:true}
+}
+
+
 
 const Login = () => {
+
+  const navigate = useNavigate();
+  const { updateNotification } = useNotification();
+
+  const [userInfo,setUserinfo] = useState({
+    email:"",
+    password:""
+  })
+
+  const handleChange = ({target})=>{
+    const {value,name} = target;
+    setUserinfo({...userInfo,[name]:value});
+  }
+
+  const handleSubmit = async(e) =>{
+    e.preventDefault()
+    console.log(userInfo);
+    const {ok, error} = validateUserInfo(userInfo)
+
+    if(!ok) return updateNotification("error",error);
+    const response = await signInUser(userInfo);
+    if(response.error) return updateNotification("error",response.error);
+  }
+
+  const {email, password} = userInfo;
   return (
-    <>
-    <div className="container">
-      <div className="FormCard">
-          <div className="title">
-            <AiOutlineLogin /> <p>LogIn</p>
-          </div>
-          <div className="inputField">
-            <FaUserCircle style={FieldStyle} />
-            <input type="email" name="email" placeholder="Email" />
-          </div>
-          <div className="inputField">
-            <AiFillLock style={FieldStyle} />
-            <input type="password" name="password" placeholder="*********" />
-          </div>
-          <div className="useful-links">
-            <CustomLink to='/register'>
-              Don't have?Register
-            </CustomLink>
-          </div>
-          <div className="btn">
-            <button className="login" type="submit">
-              Login
-            </button>
-          </div>
-        </div>
+  <>
+    <div className="heroImage">
+      <img src={heroImage} alt="register" />
+    </div>
+    <form onSubmit={handleSubmit} className="container">
 
-        <div className="heroImage">
-          <img src={heroImage} alt="register" />
-        </div>
+      <Heading>
+        <h3 style={{color:'#fff'}}>Login Form</h3>
+      </Heading>
+      
+      
 
-      </div>
+      <InputField 
+          value={email}
+          onChange={handleChange}
+          name="email"
+          placeholder='john@gmail.com'
+      />
 
-      <Footer/>
-    </>
+      <InputField 
+          value={password}
+          onChange={handleChange}
+          name="password"
+          placeholder='********'
+          type="password"
+      />
+
+    <SubmitBtn value="Sign Up"/>
+    <div className='useful-links'>
+      <CustomLink to="/auth/forget-password">
+        Forget Password
+      </CustomLink>
+      <CustomLink to="/auth/signup">
+        Sign Up
+      </CustomLink>
+    </div>
+
+    </form>
+  </>
         
   )
 }

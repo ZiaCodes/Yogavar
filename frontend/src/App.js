@@ -1,11 +1,13 @@
 import Home from "./container/home/Home";
 import "./style.css";
 import { Route, Routes } from "react-router-dom";
-import Nav from "./components/Nav/Nav";
+import Nav from "./components/Misc/Form/Nav";
 import Login from "./container/Auth/Login";
 import Register from "./container/Auth/Register";
-import Contact from './components/Contact/Contact'
-import About from './components/About/About'
+import ForgetPassword from "./container/Auth/ForgetPassword";
+import EmailVerification from './container/Auth/EmailVerification'
+
+import NotFound from './components/Misc/NotFound';
 
 
 export default function App() {
@@ -14,11 +16,11 @@ export default function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
-
+        <Route path="/auth/signin" element={<Login />} />
+        <Route path="/auth/signup" element={<Register />} />
+        <Route path='/auth/verification' element={<EmailVerification/>}/>
+        <Route path="/auth/forget-password" element={<ForgetPassword />} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </>
   );
