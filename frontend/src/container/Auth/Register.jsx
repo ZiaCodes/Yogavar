@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, {useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import heroImage from '../../assets/logo.svg'
 import {isValidEmail} from '../../utils/helper'
@@ -7,7 +7,7 @@ import Heading from '../../components/Misc/Form/Heading';
 import InputField from '../../components/Misc/Form/InputField';
 import SubmitBtn from '../../components/Misc/Form/SubmitBtn';
 import CustomLink from '../../components/Misc/CustomLink';
-import {useNotification} from '../../hooks/index'
+import {useAuth, useNotification} from '../../hooks/index'
 
 
 const validateUserInfo = ({name,email,password}) =>{
@@ -30,6 +30,8 @@ const Register = () => {
 
   const navigate = useNavigate();
   const { updateNotification } = useNotification();
+  const { authInfo} = useAuth();
+  const {isLoggedIn} = authInfo;
 
   const [userInfo,setUserinfo] = useState({
     name:"",
@@ -56,6 +58,10 @@ const Register = () => {
       replace:true,
     });
   }
+
+  useEffect(()=>{
+    if(isLoggedIn) navigate('/user/profile')
+  },[isLoggedIn])
 
   const {name, email, password} = userInfo;
 

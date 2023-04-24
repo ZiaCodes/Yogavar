@@ -6,8 +6,7 @@ import Heading from '../../components/Misc/Form/Heading';
 import InputField from '../../components/Misc/Form/InputField';
 import SubmitBtn from '../../components/Misc/Form/SubmitBtn';
 import CustomLink from '../../components/Misc/CustomLink';
-import {useNotification} from '../../hooks/index'
-import { signInUser } from '../../apis/auth';
+import {useAuth,useNotification} from '../../hooks'
 
 const validateUserInfo = ({email,password}) =>{
 
@@ -25,12 +24,14 @@ const validateUserInfo = ({email,password}) =>{
 const Login = () => {
 
   const navigate = useNavigate();
-  const { updateNotification } = useNotification();
-
+  
   const [userInfo,setUserinfo] = useState({
     email:"",
     password:""
   })
+  const { updateNotification } = useNotification();
+  const {handleLogin, authInfo} = useAuth();
+  const {isPending,isLoggedIn} = authInfo;
 
   const handleChange = ({target})=>{
     const {value,name} = target;
@@ -39,13 +40,16 @@ const Login = () => {
 
   const handleSubmit = async(e) =>{
     e.preventDefault()
-    console.log(userInfo);
     const {ok, error} = validateUserInfo(userInfo)
 
     if(!ok) return updateNotification("error",error);
-    const response = await signInUser(userInfo);
-    if(response.error) return updateNotification("error",response.error);
+    
+    handleLogin(userInfo.email, userInfo.password)
   }
+
+  useEffect(()=>{
+    if(isLoggedIn) navigate('/user/profile')
+  },[isLoggedIn])
 
   const {email, password} = userInfo;
   return (
@@ -62,21 +66,21 @@ const Login = () => {
       
 
       <InputField 
-          value={email}
+          value={userInfo.email}
           onChange={handleChange}
           name="email"
           placeholder='john@gmail.com'
       />
 
       <InputField 
-          value={password}
+          value={userInfo.password}
           onChange={handleChange}
           name="password"
           placeholder='********'
           type="password"
       />
 
-    <SubmitBtn value="Sign Up"/>
+    <SubmitBtn value="Sign Up" busy={isPending}/>
     <div className='useful-links'>
       <CustomLink to="/auth/forget-password">
         Forget Password

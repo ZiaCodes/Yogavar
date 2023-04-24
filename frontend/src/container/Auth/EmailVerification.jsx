@@ -4,7 +4,7 @@ import SubmitBtn from '../../components/Misc/Form/SubmitBtn';
 import Heading from '../../components/Misc/Form/Heading';
 import heroImage from '../../assets/logo.svg'
 import { verifyUserEmail } from '../../apis/auth';
-import { useNotification } from '../../hooks';
+import { useAuth, useNotification } from '../../hooks';
 
 const isValidOtp = (otp) =>{
   let valid = false;
@@ -27,6 +27,10 @@ const EmailVerification = () => {
 
   const navigate = useNavigate();
   const { updateNotification } = useNotification();
+
+  const {isAuth, authInfo} = useAuth();
+
+  const {isLoggedIn} = authInfo;
 
   const {state} =useLocation();
   const user = state?.user;
@@ -69,11 +73,14 @@ const EmailVerification = () => {
   const handleSubmit = async (e) =>{
     e.preventDefault();
     if(!isValidOtp(otp)) return updateNotification("error","Invalid otp");
-    const {error, message } = await verifyUserEmail({OTP:otp.join(''), userId:user.id}) 
+    const {error, message, user: userResponse } = await verifyUserEmail({
+      OTP:otp.join(''), userId:user.id
+    }); 
     if(error) return updateNotification("error",error);
 
     updateNotification("success", message);
-
+    localStorage.setItem('auth-token',userResponse.token)
+    isAuth();
   }
 
   useEffect(() => {
@@ -82,7 +89,8 @@ const EmailVerification = () => {
 
   useEffect(()=>{
     if(!user) navigate('/not-found');
-  },[user])
+    if(isLoggedIn) navigate('/user/profile')
+  },[user, isLoggedIn])
 
   return (
 

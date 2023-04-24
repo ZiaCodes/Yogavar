@@ -99,7 +99,13 @@ exports.verifyEmail = async (req,res) =>{
     `,
   });
 
-  res.json({message: " Your Email is verified!"})
+  const jwtToken = jwt.sign({userId: user._id},process.env.JWT_SECRET_TOKEN,{expiresIn:'7d'})
+
+  res.json({
+    user:{id: user._id, name: user.name, email: user.email,
+    token: jwtToken},
+    message: " Your Email is verified!"
+  })
 }
 
 
@@ -163,7 +169,7 @@ exports.forgetPassword = async(req,res) => {
   const newPasswordResetToken = await passwordResetToken({owner: user._id,token})
   await newPasswordResetToken.save();
 
-  const resetPasswordUrl = `http://localhost:3000/reset-password?token=${token}&id=${user._id}`;
+  const resetPasswordUrl = `http://localhost:3000/auth/reset-password?token=${token}&id=${user._id}`;
 
   //Send to email
   var transport = generateMailTransporter();
