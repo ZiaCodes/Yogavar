@@ -4,10 +4,15 @@ import Heading from '../../components/Misc/Form/Heading'
 import InputField from '../../components/Misc/Form/InputField'
 import CustomLink from '../../components/Misc/CustomLink'
 import SubmitBtn from '../../components/Misc/Form/SubmitBtn'
+import { useNotification } from '../../hooks'
+import { isValidEmail } from '../../utils/helper'
+import { forgetPassword } from '../../apis/auth'
 
 
 const ForgetPassword = () => {
     const [email, setEmail] = useState('')
+
+    const {updateNotification} = useNotification();
 
     const handleChange = ({target}) =>{
         const {value} = target;
@@ -16,7 +21,12 @@ const ForgetPassword = () => {
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
-        console.log(email);
+        if(!isValidEmail(email)) return updateNotification("error", "Invalid Email");
+
+        const {error, message} = await forgetPassword(email);
+        if(error) return updateNotification("error", error);
+
+        updateNotification("success", message)
     };
 
   return (

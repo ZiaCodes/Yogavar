@@ -44,7 +44,6 @@ const Register = () => {
 
   const handleSubmit = async(e) =>{
     e.preventDefault()
-    console.log(userInfo);
     const {ok, error} = validateUserInfo(userInfo)
 
     if(!ok) return updateNotification("error",error);

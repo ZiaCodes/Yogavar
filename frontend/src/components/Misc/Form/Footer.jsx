@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <div className="footer">
         <div>
-          <p>Design  with <AiFillHeart style={{color:'red',position:'relative',top:'3px'}}/> by <a style={{color:'white',textDecoration:'none'}} href="https://github.com/ziacodes" target='_blank'>ziacodes</a></p>
+          <p>Design  with <AiFillHeart style={{color:'red',position:'relative',top:'3px'}}/> by <a style={{color:'white',textDecoration:'none'}} href="https://github.com/ziacodes" >ziacodes</a></p>
         </div>
       <ul>
             <li>

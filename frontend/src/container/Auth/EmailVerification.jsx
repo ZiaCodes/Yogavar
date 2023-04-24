@@ -55,11 +55,11 @@ const EmailVerification = () => {
     setOtp([...newOtp])
   }
 
-  // const handleKeyDown = ({key},index) => {
-  //   if(key ==='Backspace'){
-  //     focusPrevInputField(index)
-  //   }
-  // }
+  const handleKeyDown = ({key},index) => {
+    if(key ==='Backspace'){
+      focusPrevInputField(index)
+    }
+  }
 
 
   const handleResendEmailOTP = async() =>{
@@ -81,7 +81,7 @@ const EmailVerification = () => {
   },[activeOtpIndex]);
 
   useEffect(()=>{
-    if(!user) navigate('/not-found')
+    if(!user) navigate('/not-found');
   },[user])
 
   return (
