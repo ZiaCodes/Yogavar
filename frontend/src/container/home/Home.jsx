@@ -15,8 +15,7 @@ import Table from '../../components/Misc/Form/Table'
 const Home = () => {  
   return (
     <>
-    <div  className="Wrapper">
-      <div className="mobile-view">
+    <div>
       <div className="yoga-poster">
         <img src={heroPoster1} alt='poster'/>
         </div>
@@ -153,7 +152,6 @@ const Home = () => {
 
       <Footer/>
 
-    </div>
     </>
   )
 }

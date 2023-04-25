@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import SubmitBtn from '../../components/Misc/Form/SubmitBtn';
 import Heading from '../../components/Misc/Form/Heading';
 import heroImage from '../../assets/logo.svg'
-import { verifyUserEmail } from '../../apis/auth';
+import { resetEmailVerificationToken, verifyUserEmail } from '../../apis/auth';
 import { useAuth, useNotification } from '../../hooks';
 
 const isValidOtp = (otp) =>{
@@ -30,7 +30,8 @@ const EmailVerification = () => {
 
   const {isAuth, authInfo} = useAuth();
 
-  const {isLoggedIn} = authInfo;
+  const {isLoggedIn, profile} = authInfo;
+  const isVerified = profile?.isVerified
 
   const {state} =useLocation();
   const user = state?.user;
@@ -67,7 +68,11 @@ const EmailVerification = () => {
 
 
   const handleResendEmailOTP = async() =>{
-    
+    const {error, message} = await resetEmailVerificationToken(user.id);
+
+    if(error) return updateNotification("error",error);
+    updateNotification("success", message);
+
   }
 
   const handleSubmit = async (e) =>{
@@ -89,8 +94,8 @@ const EmailVerification = () => {
 
   useEffect(()=>{
     if(!user) navigate('/not-found');
-    if(isLoggedIn) navigate('/user/profile')
-  },[user, isLoggedIn])
+    if(isLoggedIn && isVerified) navigate('/user/profile')
+  },[user, isLoggedIn, isVerified])
 
   return (
 
@@ -130,6 +135,7 @@ const EmailVerification = () => {
                   display:'flex',
                   justifyContent:'center',
                   alignItems:'center',
+                  flexDirection: 'column',
                 }}>
                   <SubmitBtn value="Verify OTP"/>
                   <button
@@ -141,7 +147,7 @@ const EmailVerification = () => {
                     border:'none',
                     color:'#fff',
                     textDecoration:'underline',
-                    fontSize:'10px',
+                    fontSize:'12px',
                   }}>
                     I don't have OTP
                   </button>

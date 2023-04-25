@@ -76,7 +76,7 @@ export const forgetPassword = async(email) =>{
 }
 
 
-//reset password token verification
+//reset token verification
 export const verifyPasswardResetToken = async(token,userId) =>{
 
     try {
@@ -84,6 +84,32 @@ export const verifyPasswardResetToken = async(token,userId) =>{
             token,
             userId
         });
+        return data;
+    } catch (error) {
+        const {response} = error;
+        if(response?.data) return response.data;
+        return {error: error.message || error};
+    }
+}
+
+//creating new password with reset route
+export const resetPassword = async(passwordInfo) =>{
+
+    try {
+        const {data} = await client.post('/user/reset-password',passwordInfo);
+        return data;
+    } catch (error) {
+        const {response} = error;
+        if(response?.data) return response.data;
+        return {error: error.message || error};
+    }
+}
+
+//resending otp 
+export const resetEmailVerificationToken = async(userId) =>{
+
+    try {
+        const {data} = await client.post('/user/resend-email-verification-token',{userId});
         return data;
     } catch (error) {
         const {response} = error;

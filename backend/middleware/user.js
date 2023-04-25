@@ -5,6 +5,7 @@ const { sendError } = require("../utils/helper")
 exports.isValidPasswordResetToken = async(req, res,next) =>{
     const {userId, token}=req.body
 
+    //token should be trim (add trim to the token please )
     if(!token.trim() || !isValidObjectId(userId))
         return  sendError(res, "Invalid Request!")
     const resetToken = await PasswordResetToekn.findOne({owner: userId})

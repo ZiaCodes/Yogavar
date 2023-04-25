@@ -74,6 +74,29 @@
 
   /* end */
 
+  /* user page styling */
+
+.Wrapper{
+    position: relative;
+    margin-top: 60px;
+    width: 100%;
+  }
+
+.verify-warning-text{
+  text-align: center;
+  padding: 0.3rem;
+  
+  }
+
+.verify-btn{
+  outline: none;
+  border: none;
+  background: none;
+  color: rgb(59,130,246);
+  font-weight: bolder;
+  cursor: pointer;
+  text-decoration: underline;
+}
 
   input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -177,6 +200,7 @@ input::-webkit-inner-spin-button {
     background-color: var(--p-clr);
     margin: 10px;
     width: 120px;
+    cursor: pointer;
   }
 
   .animate-spin{
@@ -535,11 +559,8 @@ input::-webkit-inner-spin-button {
   }
 
 /* table */
-.wrapper{
-  width: min(900px, 100%-3rem);
-  margin-inline: auto;
-}
-.wrapper > table{
+
+table{
   width: 100%;
   border-collapse: collapse;
   display: flex;
