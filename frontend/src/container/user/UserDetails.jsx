@@ -1,5 +1,6 @@
-import React from 'react'
 import Heading from "../../components/Misc/Form/Heading"
+import InputField from '../../components/Misc/Form/InputField'
+import SubmitBtn from '../../components/Misc/Form/SubmitBtn'
 import { useAuth } from "../../hooks";
 import {MdEmail} from 'react-icons/md'
 import {FaBirthdayCake} from 'react-icons/fa'
@@ -7,12 +8,12 @@ import {BiMaleFemale} from 'react-icons/bi'
 import {RiContactsBook2Fill} from 'react-icons/ri'
 import {BsFillBuildingsFill} from 'react-icons/bs'
 import {MdContentCopy} from 'react-icons/md'
+import { useState } from "react";
+
 
 const UserDetails = () => {
 
-    const copyUserId = () =>{
-        console.log("Clicked");
-    }
+    const [open,setOpen] = useState(false)
 
     const { authInfo} = useAuth();
     const userName = authInfo.profile?.name;
@@ -20,8 +21,56 @@ const UserDetails = () => {
     const email = authInfo.profile?.email;
 
   return (
-    <div className="user-update-form">
+    <>
+    {
+        open && 
+        <div className="model-box">
+            <form className="container extra-styling-for-edit-profile">
+                <Heading>
+                    <h3 style={{color:'#fff'}}>
+                Edit Details
+                    </h3>
+                </Heading>
 
+                <div className="dob-gender">
+                    <select name="Gender">
+                        <option value="gender">Select your Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+
+                    <input type="date" 
+                    name="dob" 
+                    value="2000-01-01"
+                    />
+                </div>
+      
+                <InputField
+                name="PhoneNumber"
+                placeholder='Phone Number'
+                />
+
+                <InputField
+                name="company"
+                placeholder='Company'
+                />
+
+                <div style={{display:'flex',gap:'5px'}}>
+        
+                </div>
+                    <div className="useful-links">
+                    <SubmitBtn value="Save"/>
+                    <button 
+                    onClick={()=> setOpen(!open)}
+                    className="submit-btn" 
+                    type="button">
+                        Close
+                    </button>
+                </div>
+            </form>
+        </div>
+    }
+        <div className="user-update-form">
       <div className="user-info-container">
       <div className="profile-img">
         <img 
@@ -43,9 +92,7 @@ const UserDetails = () => {
       <div className="user-details-conatiner">
         <div className="user-field-name">
           <p><b>{userId}</b></p>
-          <MdContentCopy 
-          onClick={copyUserId}
-          />
+          <MdContentCopy />
         </div>
         <div className="user-field-name">
           <MdEmail/>
@@ -69,13 +116,16 @@ const UserDetails = () => {
         </div>
 
         <div className="edit-btn">
-          <p style={{color:'rgb(59,130,246)',fontWeight:'bolder',marginTop:'20px',cursor:'pointer'}}>
+          <p 
+          onClick={()=> setOpen(!open)}
+          style={{color:'rgb(59,130,246)',fontWeight:'bolder',marginTop:'20px',cursor:'pointer'}}>
             Edit
           </p>
         </div>
       </div>
       </div>
     </div>
+    </>
   )
 }
 

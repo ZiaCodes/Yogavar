@@ -719,5 +719,48 @@ th,td{
   object-fit: cover;
 }
 
+.dob-gender{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.dob-gender > input {
+  width: 55%;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  
+}
+
+select,option{
+  width: 60%;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  font-weight: bolder;
+}
+.model-box{
+  width: 100%;
+  position: absolute;
+  z-index: 99999999999;
+  height: 100vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  backdrop-filter: blur(5px);
+}
+
 
   
