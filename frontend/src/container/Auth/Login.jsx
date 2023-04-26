@@ -32,6 +32,8 @@ const Login = () => {
   const { updateNotification } = useNotification();
   const {handleLogin, authInfo} = useAuth();
   const {isPending,isLoggedIn} = authInfo;
+  const userName = authInfo.profile?.name.replaceAll(' ','');
+  const userId = authInfo.profile?.id;
 
   const handleChange = ({target})=>{
     const {value,name} = target;
@@ -48,7 +50,7 @@ const Login = () => {
   }
 
   useEffect(()=>{
-    if(isLoggedIn) navigate('/user/profile')
+    if(isLoggedIn) navigate(`/user/${userName}${userId}`);
   },[isLoggedIn])
 
   const {email, password} = userInfo;
@@ -80,7 +82,7 @@ const Login = () => {
           type="password"
       />
 
-    <SubmitBtn value="Sign Up" busy={isPending}/>
+    <SubmitBtn value="Log In" busy={isPending}/>
     <div className='useful-links'>
       <CustomLink to="/auth/forget-password">
         Forget Password

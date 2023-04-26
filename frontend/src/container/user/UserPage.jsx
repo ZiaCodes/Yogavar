@@ -1,10 +1,13 @@
-import NotVerified from "./NotVerified"
+import NotVerified from "./NotVerified";
+import UserDetails from "./UserDetails";
 
 const UserPage = () => {
+
+  
   return(
     <>
     <NotVerified/>
-    <p>User Page</p>
+    <UserDetails/>
     </>
   )  
 }

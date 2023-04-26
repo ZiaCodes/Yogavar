@@ -36,6 +36,10 @@ const Register = () => {
   const [userInfo,setUserinfo] = useState({
     name:"",
     email:"",
+    phoneNumber:"",
+    gender:"",
+    age:"",
+    company:"",
     password:""
   })
 

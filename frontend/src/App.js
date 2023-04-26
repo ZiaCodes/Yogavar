@@ -24,6 +24,7 @@ export default function App() {
         <Route path='/auth/verification' element={<EmailVerification/>}/>
         <Route path="/auth/forget-password" element={<ForgetPassword />} />
         <Route path="/auth/reset-password" element={<ConfirmPassword />} />
+        <Route path="/user/:userId" element={<UserPage />} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
     </>

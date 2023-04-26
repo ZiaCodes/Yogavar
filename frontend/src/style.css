@@ -680,5 +680,44 @@ th,td{
   }
 }
 
+/* user profile  */
+
+.user-info-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin-top: -60px;
+  
+}
+.user-details-conatiner{
+  width: 80%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.117);
+  border: 1px solid #0000000f;
+  border-radius: 5px;
+
+}
+.extra-styling{
+  text-transform: uppercase;
+}
+.user-field-name{
+  width: 50%;
+  padding: 10px 5px;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+.profile-img> img{
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
 
   

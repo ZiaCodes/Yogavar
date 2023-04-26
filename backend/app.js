@@ -13,17 +13,13 @@ app.use(morgan('dev'));
 
 const PORT = 8000 || process.env.PORT
 
-//test Page
-// app.post("/sign-in",(req, res, next)=>{
-//     const { email, password } = req.body;
-//     if( !email || !password)
-//         return res.json({error : "Email/password is missing"});
-//     next();
-// },
-// (req,res)=>{
-//     res.send('<h2>Review App backend End poin</2>');
-// })
 
+app.get('/',(req,res)=>{
+    res.send(`
+        <h1>yogavar Api</h1>
+        <p>Use /api/user/ </p>
+    `)
+})
 
 
 const userRouter = require('./routes/user');

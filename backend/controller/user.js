@@ -9,7 +9,7 @@ const { sendError, generateRandomByte } = require('../utils/helper');
 
 //create a new user (Method)
 exports.create = async (req,res) => {
-    const{name, email, password} = req.body;
+    const{name, email,phoneNumber,gender,age,company, password} = req.body;
 
     // checking if same email exist or not
     const oldUser =await User.findOne({ email });
@@ -17,7 +17,7 @@ exports.create = async (req,res) => {
         return sendError(res, "This email is already in use");
 
     // creating new User
-    const newUser = new User({name, email, password});
+    const newUser = new User({name, email, phoneNumber, gender, age, company, password});
     await newUser.save();
 
 
@@ -49,7 +49,8 @@ exports.create = async (req,res) => {
         user: {
           id: newUser._id,
           name: newUser.name,
-          email: newUser.email
+          email: newUser.email,
+          
         }
       });
 };
