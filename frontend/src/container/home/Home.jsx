@@ -10,6 +10,8 @@ import Benefits from '../../components/Misc/Benefits'
 import MentorCard from '../../components/Misc/MentorCard';
 import MembershipInclude from '../../components/Misc/MembershipInclude'
 import Table from '../../components/Misc/Form/Table'
+import YogaVideo from '../../assets/yoga-video.mp4'
+import YogaPoster from '../../assets/yoga-video-poster.mp4';
 
 
 const Home = () => {  
@@ -17,7 +19,12 @@ const Home = () => {
     <>
     <div>
       <div className="yoga-poster">
-        <img src={heroPoster1} alt='poster'/>
+        <div className="slogan">
+        <p>Yoga Has Many Meaning</p>
+        <p>What does it mean for <br /> <b>you?</b> </p>
+        </div>
+        <video className='yogaVideo2 yogaPoster' autoPlay loop muted 
+        src={YogaPoster}/>
         </div>
       <div className="landing-section">
         <div className="hero-poster">
@@ -34,7 +41,7 @@ const Home = () => {
       </div>
 
       <div className="section-info">
-        <div className="description">
+        <div className="ending-quote">
           <p>For over 30 years we’ve been leading people like you to the best yoga classes and teachers in the world so you can experience the transformational health benefits of yoga.</p>
         </div>
           <div className="benefits-yoga">
@@ -137,6 +144,41 @@ const Home = () => {
 
       <MembershipInclude/>
 
+      </div>
+
+      <Heading>
+        <p>Inhale the future, exhale the past</p>
+        <br />
+        
+        <video className='yogaVideo2' autoPlay loop muted 
+        src={YogaVideo}/>
+        <div className="slogan down-slg">
+        <p>The future of your health</p>
+        </div>
+      </Heading>
+
+      <div className="ending-quote">
+        <p className="ending-quote-bold">
+        DIG DEEPER WITH MEMBER COURSES
+        </p>
+        <p>
+        Learn everything from yoga history and philosophy to yoga therapy 
+        with our online yoga courses. Uplevel your training with our 
+        exclusive courses, which are eligible for continuing education 
+        credits with Yogayar.
+        </p>
+      </div>
+
+
+      <Heading>
+        
+        <video className='yogaVideo2' autoPlay loop muted 
+        src={YogaPoster}/>
+        <div className="slogan down-slg">
+        <p>JOURNEY TO WELL-BEING </p>
+        </div>
+      </Heading>
+
       <Heading>
         <p className='ending-quote-bold'>
           START YOUR JOURNEY TO WELL-BEING AND TRANSFORMATION NOW!
@@ -148,6 +190,26 @@ const Home = () => {
         </div>
       </Heading>
 
+      <div className="ending-quote">
+        <p className="ending-quote-bold">
+        EXPERIENCE THE YOGAVAR DIFFERENCE
+        </p>
+        <p>
+        While other platforms have shifted to pilates and fitness 
+        focused content, we’ve stayed true to yoga and our mission
+         to help you find the path that works best for you.
+        </p>
+      </div>
+
+      <div className='ending-quote'>
+        <p>Join our News Letter to know more exclusive offers about product subscription and more ...</p>
+      </div>
+
+      <div className="news-letter">
+        <input className='email-input-sub' 
+        placeholder='Your Email'
+        type="email" name="email"/>
+        <button type="submit">Subscribe</button>
       </div>
 
       <Footer/>

@@ -8,17 +8,25 @@ import {BiMaleFemale} from 'react-icons/bi'
 import {RiContactsBook2Fill} from 'react-icons/ri'
 import {BsFillBuildingsFill} from 'react-icons/bs'
 import {MdContentCopy} from 'react-icons/md'
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const UserDetails = () => {
 
     const [open,setOpen] = useState(false)
 
+    const navigate = useNavigate();
+
     const { authInfo} = useAuth();
+    const {isLoggedIn} = authInfo;
     const userName = authInfo.profile?.name;
     const userId = authInfo.profile?.id;
     const email = authInfo.profile?.email;
+
+    useEffect(()=>{
+      if(!isLoggedIn) navigate('/auth/signin')
+    },[isLoggedIn])
 
   return (
     <>
