@@ -1,23 +1,25 @@
-import {FaUserCircle} from 'react-icons/fa';
-import {MdDangerous} from 'react-icons/md'
 import { GiHamburgerMenu } from "react-icons/gi";
 import {MdLightMode} from 'react-icons/md';
 import Logo from '../../../assets/logo.png'
 import CustomLink from "../CustomLink";
-import {useAuth, useTheme } from '../../../hooks';
+import { useTheme } from '../../../hooks';
+import { useState } from 'react';
+import Sidebar from './Sidebar';
 
 
 const Nav = () => {
+  const [open, setOpen] = useState(true);
   const {toggleTheme} = useTheme();
-  const {authInfo, handleLogout} = useAuth()
-  const {isLoggedIn} = authInfo;
+
 
   return (
     <>
       <div className="nav-bar">
         <div className="logo">
           <CustomLink>
-            <GiHamburgerMenu className="profile-menu"/>
+            <GiHamburgerMenu 
+            onClick={()=> setOpen(!open)}
+            className="profile-menu"/>
           </CustomLink>
         </div>
 
@@ -33,23 +35,14 @@ const Nav = () => {
                 onClick={ toggleTheme }
                className="profile-menu"/>
             </CustomLink>
-            {
-              isLoggedIn ? (
-                <CustomLink to="#">
-                  <MdDangerous 
-                  onClick={handleLogout}
-                  className="profile-menu"
-                  />
-                </CustomLink>
-              ) : (
-                <CustomLink to="/auth/signin">
-                  <FaUserCircle className="profile-menu"/>
-                </CustomLink>
-              )
-            }
           </ul>
         </div>
       </div>
+
+      {
+        open &&
+        <Sidebar/>
+      }
     </>
   );
 };

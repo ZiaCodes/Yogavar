@@ -201,6 +201,7 @@ input::-webkit-inner-spin-button {
     margin: 10px;
     width: 120px;
     cursor: pointer;
+    color: var(--s-clr);
   }
 
   .animate-spin{
@@ -363,13 +364,6 @@ input::-webkit-inner-spin-button {
     width: 100%;
   }
 
-  .section-info > .description{
-    text-align: center;
-    padding: 20px;
-    font-size: 20px;
-    font-weight: bolder;
-  }
-
   .section-info > .benefits-yoga{
     width: 100%;
     height: auto;
@@ -490,6 +484,102 @@ input::-webkit-inner-spin-button {
     border-radius: 8px;
   }
 
+  .news-letter{
+    display: flex;
+    background-color: var(--main-clr);
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 3px;
+  }
+  .news-letter > .email-input-sub,button{
+    outline: none;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-weight: bolder;
+  }
+  .news-letter > .email-input-sub::placeholder{
+    color: #fff;
+    font-weight: lighter;
+  }
+  .news-letter > .email-input-sub {
+    margin-left: 20px;
+  }
+  .news-letter > button {
+    margin-right: 20px;
+
+  }
+  .slogan{
+    position: absolute;
+    z-index: 999;
+    margin-top: -90px;
+  }
+
+  .down-slg{
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .slogan > p{
+    color: var(--p-clr);
+    text-align: center;
+    filter: drop-shadow(1px 1px 1px #000000);
+    
+  }
+  
+  .slogan > p:nth-child(1){
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.26rem;
+    font-weight: bolder;
+    animation: text-skew 8s alternate ease-in-out infinite;
+  }
+
+  .slogan > p:nth-child(2){
+    font-size: 0.9rem;
+    letter-spacing: 0.25rem;
+    text-transform: uppercase;
+    animation: text-skew 7s alternate ease-in-out infinite;
+  }
+
+  @keyframes text-skew {
+    to{
+      opacity: 0.3;
+      letter-spacing: 0.36rem;
+    }
+    from{
+      opacity: 1;
+      letter-spacing: 0.25rem;
+    }
+  }
+
+  .yogaVideo2{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #00000045;
+    padding: 0.1rem;
+    pointer-events: none;
+    transition: 0.01s all;
+    filter: drop-shadow(5px 5px 10px #0000001f);
+  }
+
+  .news-letter > input:nth-child(1){
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    box-sizing: border-box;
+    outline: 0.1px solid var(--main-clr);
+    outline-offset: -1px;
+  }
+
+  .news-letter > input:nth-child(2){
+    background-color: var(--main-clr);
+    color: var(--p-clr);
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
 
 
   .card-holder-circle{
@@ -522,7 +612,7 @@ input::-webkit-inner-spin-button {
   }
   .title-card-circle{
     font-weight: lighter;
-    font-size: 18px;
+    font-size: 18px; 
   }
 
   .title-card > h1{
@@ -763,4 +853,48 @@ select,option{
 }
 
 
+/* Sidebar */
+
+.sidebar{
+  background-color: var(--p-clr);
+  width: 200px;
+  height: 100vh;
+  position: fixed;
+  z-index: 99999;
+  margin-top: 60px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  color: var(--s-clr);
+}
+.sidebar > .user{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  list-style: none;
+  gap: 1rem;
+  padding: 10px;
+  margin-left: 30px;
+}
+
+.sidebar > .user > li {
+  font-size: 0.9rem;
+  font-weight: lighter;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.sidebar > .user > .user-name {
+  font-weight: bolder;
+  font-size: 1.1rem;
+}
+
+
+.sidebar> .user > .login-register{
+  display: flex;
+  align-items: left;
+  cursor: pointer;
+}
   
