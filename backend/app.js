@@ -7,7 +7,10 @@ require('dotenv').config();
 require('./db')
 
 const app = express()
-app.use(cors())
+app.use(cors({
+    origin:'http://yogavar.vercel.app/',
+    methods:["GET","POST","DELETE","PUT"],
+}))
 app.use(express.json())
 app.use(morgan('dev'));
 
