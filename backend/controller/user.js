@@ -33,7 +33,7 @@ exports.create = async (req,res) => {
     var transport = generateMailTransporter();
 
       transport.sendMail({
-        from: "verification@yogavar.com",
+        from: "yogavaar@gmail.com",
         to: newUser.email,
         subject:"Email Verification",
         html:`
@@ -146,7 +146,7 @@ exports.reSendEmailVerificationToekn = async (req, res) =>{
            <p> Your verification OTP: </p>
            <h3>${OTP}</h3>
            <br>
-           <p> <b> Note : </b>This OTP Valid for one hour only. </p>
+           <p> <b> Note : </b>This OTP Vali5c57af0c602b99d for one hour only. </p>
            <p> Thank You<p>
            `,
          });
