@@ -11,8 +11,7 @@ exports.generateOTP = (Otp_length = 6) =>{
 
 exports.generateMailTransporter = () =>
     nodemailer.createTransport({
-        host: "smtp.mailtrap.io",
-        port: 2525,
+        service:"gmail",
         auth: {
           user: process.env.NODE_MAILER_USERNAME,
           pass: process.env.NODE_MAILER_USERPASSWORD
