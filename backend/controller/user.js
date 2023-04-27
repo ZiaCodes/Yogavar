@@ -173,7 +173,7 @@ exports.forgetPassword = async(req,res) => {
 
   const resetPasswordUrl = `http://localhost:3000/auth/reset-password?token=${token}&id=${user._id}`;
 
-  //Send to email
+  //Send to email to user
   var transport = generateMailTransporter();
    
   transport.sendMail({
