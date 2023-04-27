@@ -171,7 +171,7 @@ exports.forgetPassword = async(req,res) => {
   const newPasswordResetToken = await passwordResetToken({owner: user._id,token})
   await newPasswordResetToken.save();
 
-  const resetPasswordUrl = `https://yogavar-services.onrender.com//auth/reset-password?token=${token}&id=${user._id}`;
+  const resetPasswordUrl = `http://yogavar.vercel.app/auth/reset-password?token=${token}&id=${user._id}`;
 
   //Send to email
   var transport = generateMailTransporter();
