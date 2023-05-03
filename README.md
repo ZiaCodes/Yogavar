@@ -64,9 +64,9 @@ and we are constantly be adding more features in the near future. You may also s
 ### Built With
 
 #### Frontend built with
-* [Reactjs]() - javaScript runtime enviroment
-* [axios]() - minimalist web framework for Node.js
-* [react-icons]() - for hashing password and tokens
+* [Reactjs]() - javaScript Liberary to create UI radipdly 
+* [axios]() - just an advanced version of Fetch Api , no need to explictly convert your data into json and many more ..
+* [react-icons]() - The icons are from react icon liberary
 
 #### Backend built with
 * [Nodejs]() - javaScript runtime enviroment
@@ -93,6 +93,14 @@ and we are constantly be adding more features in the near future. You may also s
  * [api/user/verify-pass-reset-token]() -verify if the reset password token is valid or not
  * [api/user/reset-password]() - for changing password of the user
 
+
+### Database Design [E R Diagram]
+
+<p align="center">
+  <a href="#">
+    <img src="https://raw.githubusercontent.com/ZiaCodes/Yogavar/feature-branch/public/Erdiagram.png?token=GHSAT0AAAAAACBTF6B5ICZHARO3P4QTY3IGZCSTFUA" alt="Logo" >
+  </a>
+</p>
 
 
 <!-- GETTING STARTED -->
