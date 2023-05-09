@@ -98,7 +98,7 @@ and we are constantly be adding more features in the near future. You may also s
 
 <p align="center">
   <a href="#">
-    <img src="https://raw.githubusercontent.com/ZiaCodes/Yogavar/feature-branch/public/Erdiagram.png?token=GHSAT0AAAAAACBTF6B5ICZHARO3P4QTY3IGZCSTFUA" alt="Logo" >
+    <img src="https://github.com/ZiaCodes/Yogavar/blob/a8a470d8e59c695afbd25f59a714ad924c0dd78c/public/Erdiagram.png" alt="Logo" >
   </a>
 </p>
 
