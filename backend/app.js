@@ -23,10 +23,12 @@ app.get('/',(req,res)=>{
 
 
 const userRouter = require('./routes/user');
+const mentorRouter = require('./routes/mentor');
 const { handleNotFound } = require('./utils/helper');
 
 //prefix Api
 app.use('/api/user', userRouter);
+app.use('/api/mentor', mentorRouter);
 
 
 app.use('/*',handleNotFound)

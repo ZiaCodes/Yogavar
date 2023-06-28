@@ -8,7 +8,7 @@ import Sidebar from './Sidebar';
 
 
 const Nav = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const {toggleTheme} = useTheme();
 
 
@@ -17,7 +17,7 @@ const Nav = () => {
       <div className="nav-bar">
         <div className="logo">
           <CustomLink>
-            <GiHamburgerMenu 
+            <GiHamburgerMenu
             onClick={()=> setOpen(!open)}
             className="profile-menu"/>
           </CustomLink>
