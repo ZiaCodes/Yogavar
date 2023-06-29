@@ -1,14 +1,7 @@
 const { isValidObjectId } = require("mongoose");
 const Mentor = require("../models/mentor");
-const { sendError } = require("../utils/helper");
-const cloudinary = require('cloudinary').v2;
-
-cloudinary.config({ 
-    cloud_name: process.env.CLOUD_NAME, 
-    api_key: process.env.CLOUD_API_KEY, 
-    api_secret: process.env.CLOUD_API_SECRET,
-    secure: true
-  });
+const { sendError, uploadImageToCloud, formateMentor } = require("../utils/helper");
+const cloudinary = require('../cloud')
 
 exports.createMentor = async(req,res) => {
     const {name , about, gender} = req.body;
@@ -17,18 +10,12 @@ exports.createMentor = async(req,res) => {
     const newMentor = new Mentor({name, about, gender});
 
     if(file){
-        const {secure_url, public_id } = await 
-            cloudinary.uploader.upload(file.path,{gravity: "face", height: 500, width: 500, crop: "thumb"})
-        newMentor.avatar = {url : secure_url, public_id};
+        const {url, public_id } = await uploadImageToCloud(file.path)
+
+        newMentor.avatar = {url, public_id};
     }
     await newMentor.save();
-    res.status(201).json({
-        id : newMentor._id,
-        name,
-        about,
-        gender,
-        avatar: newMentor.avatar?.url
-    });
+    res.status(201).json(formateMentor(newMentor));
 
 }
 
@@ -57,9 +44,8 @@ exports.updateMentor = async(req,res) => {
     //upload new avatar if there is one
 
     if(file){
-        const {secure_url, public_id } = 
-        await cloudinary.uploader.upload(file.path, {gravity: "face", height: 500, width: 500, crop: "thumb"})
-        mentor.avatar = {url : secure_url, public_id};
+        const {url, public_id } = await uploadImageToCloud(file.path)
+        mentor.avatar = {url, public_id};
 
     }
         console.log(public_id)
@@ -69,13 +55,7 @@ exports.updateMentor = async(req,res) => {
 
         await mentor.save();
 
-        res.status(201).json({
-            id : mentor._id,
-            name,
-            about,
-            gender,
-            avatar: mentor.avatar?.url
-        });
+        res.status(201).json(formateMentor(mentor));
 }
 
 exports.removeMentor = async(req,res) => {
@@ -109,13 +89,16 @@ exports.searchMentor = async(req,res) =>{
     const {query} = req
 
     const result = await Mentor.find({ $text: {$search: `"${query.name}"` }});
-    res.json(result)
+
+    const mentors = result.map(mentor => formateMentor(mentor))
+    res.json(mentors)
 }
 
 exports.getLatestMentors = async(req, res) =>{
     const result = await Mentor.find().sort({createdAt: '-1'}).limit(12);
 
-    res.json(result)
+    const mentors = result.map(mentor => formateMentor(mentor))
+    res.json(mentors)
 }
 
 exports.getSingleMentor = async(req,res) =>{
@@ -129,6 +112,6 @@ exports.getSingleMentor = async(req,res) =>{
     if(!mentor) 
         return sendError(res, "Invalid request, Mentor not found!",404)
     
-    res.json(mentor);
+    res.json(formateMentor(mentor));
 
 }
