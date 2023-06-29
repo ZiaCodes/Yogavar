@@ -25,6 +25,8 @@ const mentorSchema = mongoose.Schema({
     
 }, {timestamps : true});
 
+mentorSchema.index({name: 'text'})
+
 
 const Mentor =new mongoose.model("Mentor",mentorSchema);
 module.exports = Mentor
