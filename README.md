@@ -64,9 +64,10 @@ and we are constantly be adding more features in the near future. You may also s
 ### Built With
 
 #### Frontend built with
-* [Reactjs]() - javaScript Liberary to create UI radipdly 
-* [axios]() - just an advanced version of Fetch Api , no need to explictly convert your data into json and many more ..
-* [react-icons]() - The icons are from react icon liberary
+* [Reactjs]() - javaScript runtime enviroment
+* [axios]() - minimalist web framework for Node.js
+* [react-icons]() - for hashing password and tokens
+* [CSS]() - Pure CSS for styling components
 
 #### Backend built with
 * [Nodejs]() - javaScript runtime enviroment
@@ -79,11 +80,13 @@ and we are constantly be adding more features in the near future. You may also s
 * [mongoose]() - MongoDb instances , it makes easy to work with MongoDB data base.
 * [morgan]() - HTTP request logger middleware for node.js
 * [nodemailer]() - for sending emails and Otp to users.
+* [Cloudinary]() - For storing images and video for better optimization
+* [multer]() - For handling multi-form data and to upload media file.
 
 ### Tools You can use to test the backend Apis
  * [POTMAN]()
  
- ### Different Routes you can use 
+ ### Routes for users
  
  * [api/user/create]() - for Creating a new user
  * [api/user/signIn]() - for login into the application
@@ -93,14 +96,45 @@ and we are constantly be adding more features in the near future. You may also s
  * [api/user/verify-pass-reset-token]() -verify if the reset password token is valid or not
  * [api/user/reset-password]() - for changing password of the user
 
+### Routes for mentors
+ 
+ * [api/mentor/create]() - for Creating a new mentor
+ * [api/mentor/update/:mentorId]() - for updating mentor details
+ * [api/mentor/:mentorId]() - for delete or searching mentors
+ * [api/mentor/search]() - for finding mentors
+ * [api/mentor/latest-uploads]() - listing the latest uploaded mentors
+ * [api/mentor/single/:id]() - finding a single mentor details
 
-### Database Design [E R Diagram]
 
-<p align="center">
+### Routes for courses
+ 
+ * [api/courses/upload]() - for Creating a new courses or to upload a course
+ * [api/courses/update/:coursesId]() - for updating courses details
+ * [api/courses/:coursesId]() - for delete or searching coursess
+ * [api/courses/search]() - for finding coursess
+ * [api/courses/latest-uploads]() - listing the latest uploaded coursess
+ * [api/courses/single/:id]() - finding a single courses details
+
+
+
+## Backend Large-Resources Upload Api Architecture 
+
+<p align="center" >
   <a href="#">
-    <img src="https://github.com/ZiaCodes/Yogavar/blob/a8a470d8e59c695afbd25f59a714ad924c0dd78c/public/Erdiagram.png" alt="Logo" >
+  <img src="https://github.com/ZiaCodes/Yogavar/blob/main/public/large-resource-upload-api.png" alt="architure">
   </a>
 </p>
+
+I have used Youtube video upload design to implement large resources upload feature. The way it works , First the backend will received the data(request-1) from frontend, process it and send it to the cloud storage ( Cloudinary ) then the response (response-1) will be send back to the backend and from there it will reflect on the frontend till then user can fill other detials like title , description and all other things untill the upload process is complete then the frontend will send the data(request-2) back to the backend and it will directly save the data into the database(MongoDB).
+
+
+## Basic Database Architecture
+<p align="center" >
+  <a href="#">
+  <img src="https://github.com/ZiaCodes/Yogavar/blob/main/public/Erdiagram.png" alt="architure">
+  </a>
+</p>
+
 
 
 <!-- GETTING STARTED -->
