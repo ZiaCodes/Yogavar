@@ -7,8 +7,8 @@ require('dotenv').config();
 require('./db')
 
 const app = express()
-app.use(cors())
 app.use(express.json())
+app.use(cors())
 app.use(morgan('dev'));
 
 const PORT = 8000 || process.env.PORT

@@ -64,10 +64,11 @@ and we are constantly be adding more features in the near future. You may also s
 ### Built With
 
 #### Frontend built with
-* [Reactjs]() - javaScript runtime enviroment
-* [axios]() - minimalist web framework for Node.js
-* [react-icons]() - for hashing password and tokens
+* [Reactjs]() - javaScript Liberary to create UI radipdly 
+* [axios]() - just an advanced version of Fetch Api , no need to explictly convert your data into json and many more ..
+* [react-icons]() - The icons are from react icon liberary
 * [CSS]() - Pure CSS for styling components
+
 
 #### Backend built with
 * [Nodejs]() - javaScript runtime enviroment
@@ -135,6 +136,14 @@ I have used Youtube video upload design to implement large resources upload feat
   </a>
 </p>
 
+
+### Database Design [E R Diagram]
+
+<p align="center">
+  <a href="#">
+    <img src="https://github.com/ZiaCodes/Yogavar/blob/a8a470d8e59c695afbd25f59a714ad924c0dd78c/public/Erdiagram.png" alt="Logo" >
+  </a>
+</p>
 
 
 <!-- GETTING STARTED -->
