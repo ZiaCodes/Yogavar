@@ -17,7 +17,7 @@ const Nav = () => {
       <div className="nav-bar">
         <div className="logo">
           <CustomLink>
-            <GiHamburgerMenu 
+            <GiHamburgerMenu
             onClick={()=> setOpen(!open)}
             className="profile-menu"/>
           </CustomLink>
