@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const genres = require('../utils/genres')
 
-const movieSchema = mongoose.Schema({
+const courseSchema = mongoose.Schema({
     title: {
         type: String,
         trim: true,
@@ -52,7 +52,7 @@ const movieSchema = mongoose.Schema({
             ref: 'Mentor'
         }
     ],
-    posters:{
+    poster:{
         type : Object,
         url: {type: String,required: true},
         public_id : {type: String,required: true},
@@ -77,5 +77,5 @@ const movieSchema = mongoose.Schema({
 },{timestamps : true});
 
 
-const Movie =new mongoose.model("Movie",movieSchema);
-module.exports = Movie
+const Course =new mongoose.model("Course",courseSchema);
+module.exports = Course
