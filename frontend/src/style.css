@@ -897,3 +897,8 @@ select,option{
   align-items: left;
   cursor: pointer;
 }
+@media (min-width: 650px) {
+  #root{
+    display: none;
+  }
+}
