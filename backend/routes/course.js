@@ -2,6 +2,7 @@ const express = require('express');
 const { isAdmin, isAuth } = require('../middleware/auth');
 const {  uploadCourse, createCourse } = require('../controller/course');
 const { uploadVideo, uploadImage } = require('../middleware/multer');
+const { parseData } = require('../middleware/helper');
 const router = express.Router()
 
 router.post(
@@ -16,6 +17,7 @@ router.post(
     '/create',
     isAuth,
     isAdmin,
+    parseData,
     uploadImage.single('poster'),
     createCourse
 )
