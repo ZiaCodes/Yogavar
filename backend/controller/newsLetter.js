@@ -41,8 +41,12 @@ exports.unSubscribeNewsLetter = async(req,res) =>{
     if(!subscriber.isSubscribed)
         sendError(res,"This email is already unsubscribed");
     
-    subscriber.isSubscribed = false;
-    subscriber.save();
+    // subscriber.isSubscribed = false;
+    await NewsLetter.findByIdAndDelete(subscriber._id);
 
     res.json({subscriber});
+}
+
+exports.muteNewsLetter = async(req,res) =>{
+    console.log("muted newsLetter Email Notification")
 }
