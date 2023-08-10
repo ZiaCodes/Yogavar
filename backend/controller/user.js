@@ -138,8 +138,6 @@ exports.verifyEmail = async (req,res) =>{
     to: user.email,
     subject: "Welcome to Yogavar",
     html:`
-
-
     <body 
     style="background-color: #f1f1f1;
     font-family: 'Courier New', Courier, monospace;

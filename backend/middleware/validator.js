@@ -65,6 +65,14 @@ exports.mentorInfoValidator = [
         .withMessage("Gender is a required field"),
 ]
 
+
+exports.newsLetterValidator = [
+    check('email')
+        .normalizeEmail()
+        .isEmail()
+        .withMessage("Invalid Emial!"),
+]
+
 exports.validate = (req, res, next) => {
     const error = validationResult(req).array();
 

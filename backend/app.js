@@ -21,7 +21,7 @@ app.get('/',(req,res)=>{
     `)
 })
 
-
+const newsLetterRouter = require('./routes/newsLetter');
 const userRouter = require('./routes/user');
 const mentorRouter = require('./routes/mentor');
 const coursesRouter = require('./routes/courses');
@@ -31,6 +31,7 @@ const { handleNotFound } = require('./utils/helper');
 app.use('/api/user', userRouter);
 app.use('/api/mentor', mentorRouter);
 app.use('/api/courses', coursesRouter);
+app.use('/api/newsletter/',newsLetterRouter);
 
 
 app.use('/*',handleNotFound)
