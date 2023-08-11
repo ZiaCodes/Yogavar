@@ -28,7 +28,9 @@ const Subscribe = () => {
         const {ok, error} = validateUserInfo(userEmail)
         if(!ok) return updateNotification("error",error);
 
-        await subscriToNewsLetter(userEmail);
+        const result = await subscriToNewsLetter(userEmail);
+        if(result.error) return updateNotification("warning",result.error);
+
         return updateNotification('success',"You have been Subscribed!")
     }
   return (
