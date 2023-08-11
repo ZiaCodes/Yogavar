@@ -10,6 +10,7 @@ import EmailVerification from './container/Auth/EmailVerification'
 import NotFound from './components/Misc/NotFound';
 import UserPage from "./container/user/UserPage";
 import ConfirmPassword from "./container/Auth/ConfirmPassword";
+import UnSubscribe from "./components/unSubscribe";
 
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/auth/forget-password" element={<ForgetPassword />} />
         <Route path="/auth/reset-password" element={<ConfirmPassword />} />
         <Route path="/user/:userId" element={<UserPage />} />
+        <Route path="/newsLetter/unsubscribe" element={<UnSubscribe/>} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
     </>
