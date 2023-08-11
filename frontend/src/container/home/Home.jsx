@@ -1,5 +1,6 @@
 import React from 'react'
 import heroPoster1 from '../../assets/img/hero-poster.png'
+import Subscribe from '../../components/subscribe'
 import heroPoster2 from '../../assets/img/hero-poster-2.png'
 import Footer from '../../components/Misc/Form/Footer'
 import CustomLink from '../../components/Misc/CustomLink'
@@ -205,12 +206,7 @@ const Home = () => {
         <p>Join our News Letter to know more exclusive offers about product subscription and more ...</p>
       </div>
 
-      <div className="news-letter">
-        <input className='email-input-sub' 
-        placeholder='Your Email'
-        type="email" name="email"/>
-        <button type="submit">Subscribe</button>
-      </div>
+      <Subscribe/>
 
       <Footer/>
 

@@ -19,9 +19,66 @@ exports.createEmailNewsLetter = async(req, res) =>{
     transport.sendMail({
         from: "verification@yogavar.com",
         to: newSubscriber.email,
-        subject: "You are Subscribed to Weekly Yogavaar NewsLetter",
+        subject: "Welcome to Yogavaar NewsLetter",
         html:`
-        <p> You have been subscribed successfully </p>
+        <body 
+        style="background-color: #f1f1f1;
+        font-family: 'Courier New', Courier, monospace;
+        text-align: center;"
+        >
+        <div>
+            <div>
+                <img 
+                style="width: 400px;
+                height: auto;
+                border-radius: 5px;"
+                src="https://cdn.pixabay.com/photo/2020/08/22/12/36/yoga-5508336__340.png" 
+                alt="poster">
+            </div>
+
+        </div>
+        <div>
+            <h1 style="font-size: 1.5rem;
+                text-transform: uppercase;">
+                Yogavaar Newsletter 
+            </h1>
+            <p 
+            style="font-size: 0.8rem;"
+            >Where we will sent you weekly Email,
+            </p>
+            <p 
+            style="font-size: 0.8rem;"
+            > about our product promotions,
+            </p>
+            <p> Discount and many more . </p>
+        </div>
+        <br>
+        <div>
+            <p>
+               <a style="text-decoration: none;
+               background-color: crimson;
+               padding: 10px;
+               color: #fff;
+               border-radius: 3px;" 
+               href="http://yogavar.vercel.app/">
+                Explore Now
+                </a>
+            </p>
+            <br>
+            <p style="color:rgba(0, 0, 0, 0.46)">Thank you</p>
+            <p style="color:rgba(0, 0, 0, 0.46)">Team Yogavar</p>
+        </div>
+
+        <br> <br>
+        
+        <p 
+        style="font-size: 0.4rem;opacity: 0.2;padding:5px"
+        > Don't want to receive such Emails?
+        <br>
+        <a style="color:"#fff" href="#">Unscribe </a>
+        </p>
+
+</body>
         `,
     });
 
@@ -34,17 +91,17 @@ exports.unSubscribeNewsLetter = async(req,res) =>{
     const {email} = req.body;
 
     const subscriber = await NewsLetter.findOne({email});
+
+    console.log(subscriber);
     
     if(!subscriber)
-    sendError(res,"Email is not in the subscription list!")
-
-    if(!subscriber.isSubscribed)
-        sendError(res,"This email is already unsubscribed");
+        return sendError(res,"Email is not in the subscription list!");
     
-    // subscriber.isSubscribed = false;
-    await NewsLetter.findByIdAndDelete(subscriber._id);
+    await NewsLetter.findByIdAndDelete(subscriber?._id);
 
-    res.json({subscriber});
+    // subscriber.isSubscribed = false;
+
+    res.json({message : "You have unsubscribed Successfully!"});
 }
 
 exports.muteNewsLetter = async(req,res) =>{
