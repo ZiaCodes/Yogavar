@@ -1,7 +1,7 @@
 {
-  "name": "backend_v2",
+  "name": "yogavaar_backendv2",
   "version": "2.0.0",
-  "description": "yogavaar backend migration from 14 to 16 ",
+  "description": "yogavaar backend services",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,10 @@
   "keywords": [
     "yogavaar",
     "restApis",
-    "ZiaCodes"
+    "ziacodes",
+    "Syed",
+    "Ziauddin",
+    "JGEC"
   ],
   "author": "ZiaCodes",
   "license": "ISC",

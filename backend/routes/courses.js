@@ -1,13 +1,25 @@
 const express = require('express');
 const { isAdmin, isAuth } = require('../middleware/auth');
-const { uploadCourses } = require('../controller/courses');
+const {  uploadCourse, createCourse } = require('../controller/course');
+const { uploadVideo, uploadImage } = require('../middleware/multer');
+const { parseData } = require('../middleware/helper');
 const router = express.Router()
 
 router.post(
-    '/upload',
+    '/upload-course',
     isAuth,
     isAdmin,
-    uploadCourses
+    uploadVideo.single('video'),
+    uploadCourse
+)
+
+router.post(
+    '/create',
+    isAuth,
+    isAdmin,
+    parseData,
+    uploadImage.single('poster'),
+    createCourse
 )
 
 module.exports = router
