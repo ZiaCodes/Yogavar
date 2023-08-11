@@ -60,7 +60,7 @@ exports.createEmailNewsLetter = async(req, res) =>{
                padding: 10px;
                color: #fff;
                border-radius: 3px;" 
-               href="http://yogavar.vercel.app/">
+               href="https://yogavar.vercel.app/">
                 Explore Now
                 </a>
             </p>
@@ -75,7 +75,7 @@ exports.createEmailNewsLetter = async(req, res) =>{
         style="font-size: 0.4rem;opacity: 0.2;padding:5px"
         > Don't want to receive such Emails?
         <br>
-        <a style="color:"#fff" href="#">Unscribe </a>
+        <a style="color:"#fff" href="https://yogavar.vercel.app/newsLetter/unsubscribe">Unscribe </a>
         </p>
 
 </body>
