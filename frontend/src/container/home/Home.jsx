@@ -1,5 +1,5 @@
-import React from 'react'
-import heroPoster1 from '../../assets/img/hero-poster.png'
+import React, { Suspense } from 'react'
+// import heroPoster1 from '../../assets/img/hero-poster.png'
 import Subscribe from '../../components/subscribe'
 import heroPoster2 from '../../assets/img/hero-poster-2.png'
 import Footer from '../../components/Misc/Form/Footer'
@@ -11,22 +11,24 @@ import Benefits from '../../components/Misc/Benefits'
 import MentorCard from '../../components/Misc/MentorCard';
 import MembershipInclude from '../../components/Misc/MembershipInclude'
 import Table from '../../components/Misc/Form/Table'
-import YogaVideo from '../../assets/yoga-video.mp4'
-import YogaPoster from '../../assets/yoga-video-poster.mp4';
-
+const PosterMedia = React.lazy(()=>import('../../components/media/posterMedia'));
 
 const Home = () => {  
   return (
     <>
     <div>
-      <div className="yoga-poster">
+    <div className="yoga-poster">
         <div className="slogan">
         <p>Yoga Has Many Meaning</p>
         <p>What does it mean for <br /> <b>you?</b> </p>
         </div>
-        <video className='yogaVideo2 yogaPoster' autoPlay loop muted 
-        src={YogaPoster}/>
-        </div>
+    <Suspense fallback={<p style={{textAlign:'center'}}>
+      Loading..
+    </p>}>
+      <PosterMedia/>
+    </Suspense>
+    </div>
+
       <div className="landing-section">
         <div className="hero-poster">
             {
@@ -150,14 +152,15 @@ const Home = () => {
       <Heading>
         <p>Inhale the future, exhale the past</p>
         <br />
-        
-        <video className='yogaVideo2' autoPlay loop muted 
-        src={YogaVideo}/>
+        <Suspense fallback={<p style={{textAlign:'center'}}>
+          Loading..
+        </p>}>
+      <PosterMedia/>
+      </Suspense>
         <div className="slogan down-slg">
         <p>The future of your health</p>
         </div>
       </Heading>
-
       <div className="ending-quote">
         <p className="ending-quote-bold">
         DIG DEEPER WITH MEMBER COURSES
@@ -170,11 +173,12 @@ const Home = () => {
         </p>
       </div>
 
-
       <Heading>
-        
-        <video className='yogaVideo2' autoPlay loop muted 
-        src={YogaPoster}/>
+      <Suspense fallback={<p style={{textAlign:'center'}}>
+      Loading..
+    </p>}>
+      <PosterMedia/>
+    </Suspense>
         <div className="slogan down-slg">
         <p>JOURNEY TO WELL-BEING </p>
         </div>

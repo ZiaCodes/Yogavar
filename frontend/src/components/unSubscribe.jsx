@@ -22,6 +22,8 @@ const UnSubscribe = () => {
         email : "",
     })
 
+    const [sub , setSub] = useState(true);
+
     const handleChange = ({target}) =>{
         const {value,name} = target;
         setUserEmail({...userEmail,[name]:value});
@@ -35,6 +37,7 @@ const UnSubscribe = () => {
         const result = await unSubscriToNewsLetter(userEmail);
         if(result.error) return updateNotification("warning",result.error);
 
+        setSub(false);
         return updateNotification('success',"You have been Unsubscribed!")
     }
   return (
@@ -48,17 +51,21 @@ const UnSubscribe = () => {
         WE ARE SORRY TO LET YOU GO 
         </p>
         <TfiFaceSad style={{fontSize:'3em',margin:'4px'}}/>
-        <TfiFaceSad style={{fontSize:'3em',margin:'4px'}}/>
-        <TfiFaceSad style={{fontSize:'3em',margin:'4px'}}/>
         </Heading>
 
-            <InputField 
-                value={userEmail.email}
-                onChange={handleChange}
-                name="email"
-                placeholder='john@gmail.com'
-            />
-            <SubmitBtn value="UnSubscribe"/>
+          {
+            sub ? (
+              <>
+              <InputField 
+              value={userEmail.email}
+              onChange={handleChange}
+              name="email"
+              placeholder='john@gmail.com'
+          />
+          <SubmitBtn value="UNSUBSCRIBE"/>
+          </>
+            ) : null
+          }
                 
 
             </form>

@@ -858,14 +858,15 @@ select,option{
 .sidebar{
   background-color: var(--p-clr);
   width: 200px;
-  height: 100vh;
+  height: 100%;
   position: fixed;
-  z-index: 99999;
-  margin-top: 60px;
+  z-index: 999999;
+  margin-top: 3em;
   justify-content: space-between;
   display: flex;
   flex-direction: column;
   color: var(--s-clr);
+  flex-wrap: wrap;
 }
 .sidebar > .user{
   display: flex;
@@ -874,8 +875,8 @@ select,option{
   align-items: left;
   list-style: none;
   gap: 1rem;
-  padding: 10px;
   margin-left: 30px;
+  padding: 1%;
 }
 
 .sidebar > .user > li {
@@ -891,9 +892,10 @@ select,option{
   font-size: 1.1rem;
 }
 
-
 .sidebar> .user > .login-register{
   display: flex;
   align-items: left;
   cursor: pointer;
 }
+
+/* Slot Booking */
