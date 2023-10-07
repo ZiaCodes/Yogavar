@@ -1,4 +1,5 @@
 <!-- PROJECT LOGO -->
+<p> NOTE: All Frontend Functionalities will be pushed soon </p>
 <br />
 <p align="center">
   <a href="#">
