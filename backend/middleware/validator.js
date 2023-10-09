@@ -1,4 +1,5 @@
 const { check, validationResult } = require('express-validator');
+const genres = require('../utils/genres');
 
 exports.userVaidator = [
     check('name')
@@ -63,6 +64,109 @@ exports.mentorInfoValidator = [
         .not()
         .isEmpty()
         .withMessage("Gender is a required field"),
+]
+
+
+exports.validateCourse = [
+
+    check('title')
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage("Title is missing!"),
+
+    check('storyLine')
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage("StoryLine is Missing!"),
+
+    check('releaseDate')
+        .isDate()
+        .withMessage("releaseDate is Missing!"),
+
+    check('language')
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage("Language is Missing!"),
+
+    check('status')
+        .isIn(['public', 'private'])
+        .withMessage('Course status must be in either Public or Private'),
+    
+    check('type')
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage("Course type is Missing!"),
+
+    check('genres')
+        .isArray()
+        .withMessage("Genres must be an array of string!")
+        .custom((value)=>{
+            for(let g of value){
+                if(!genres.includes(g)) 
+                    throw Error("Invalid Genres!")
+            }
+            return true;
+        }),
+
+    check('tags')
+        .isArray({min: 1})
+        .withMessage("tags must be an array of string")
+        .custom((tags) =>{
+            for(let tag of tags){
+                if(typeof tag !== 'string') 
+                    throw Error("Tags must be an array of string")
+            }
+            return true;
+        }),
+
+    check('cast')
+        .isArray()
+        .withMessage("cast must be an array of string!")
+        .custom((cast)=>{
+            for(let c of cast){
+                if(!isValidObjectId(c.actor)) 
+                    throw Error("Invalid cast id inside Cast Id!")
+                
+                if(!c.roleAs?.trim()) 
+                    throw Error("Role As is missing inside cast!")
+
+                if(typeof c.leadActor !== Boolean) 
+                    throw Error("only Boolean values are accepted in Lead Actor!")
+            }
+            return true;
+        }),
+
+    check('trailer')
+        .isObject()
+        .withMessage("trailer must be an object with url and public_id!")
+        .custom(({url, public_id})=>{
+            try {
+                const result = new URL(url);
+                if(!result.protocol.includes('http'))
+                    throw Error("Trailer url is invalid!");
+
+                const arr = url.split('/')
+                const publicId = arr[arr.length-1].split('.')[0];
+                if(public_id !== publicId)
+                    throw Error("Trailer Public_id is invalid!")
+
+            } catch (error) {
+                throw Error("Trailer url is invalid!");
+            }
+            return true;
+        }),
+
+    check('poster')
+        .custom((_,{req})=>{
+            if(!req.file)
+                throw Error("Poster file is missing!");
+            return true;
+        })
+
 ]
 
 

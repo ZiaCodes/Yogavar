@@ -1,49 +1,60 @@
-import React from 'react'
-import heroImage from '../../assets/logo.svg'
+import React, { useEffect, useState } from 'react'
 import Heading from '../../components/Misc/Form/Heading'
-import InputField from '../../components/Misc/Form/InputField'
-import SubmitBtn from '../../components/Misc/Form/SubmitBtn'
+import { getAllMentors, getSingleMentor } from '../../apis/mentor';
+import SubmitBtn from '../../components/Misc/Form/SubmitBtn';
+
 const BookSlot = () => {
+
+  const [mentors,setMentors] = useState([]);
+  const [selectedMentor , setSelectedMentor] = useState({});
+
+  const getData = async() =>{
+    const res = await getAllMentors();
+    if(res.error) return console.log(res.error);
+    setMentors(res);
+  }
+
+  useEffect(()=>{
+    getData();
+  },[])
+
+
+  const selectMentor = async(id) =>{
+    const res = await getSingleMentor(id);
+    if(res.error) return console.log(res.error);
+    setSelectedMentor(res);
+    console.log(selectedMentor);
+  }
+
   return (
-    <div>
-      <div className="heroImage">
-      <img src={heroImage} alt="register" />
-    </div>
-    <form className="container">
+    <>
+    <div className="mentor-list-in-slot">
+
     <Heading>
-        <h3 style={{color:'#fff'}}>Book Your Slot</h3>
+        <h3 style={{color:'#fff'}}>Select a Mentor</h3>
     </Heading>
 
-    <InputField 
-        name="name"
-        type="text"
-        placeholder='John Doe'
-    />
-    <InputField 
-        name="email"
-        type="email"
-        placeholder='john@gmail.com'
-    />
-    <InputField 
-        name="phoneNumber"
-        type="number"
-        placeholder='+91 90000000'
-    />
-    <InputField 
-        name="date"
-        type="date"
-        placeholder='Date'
-        
-    />
-    <InputField 
-        name="time"
-        type="time"
-        placeholder='time'
-    />
+    {
+        mentors.map((mentor)=>{
+          return(
+            <div onClick={()=>selectMentor(mentor.id)} key={mentor.id} className='mentor-details-box-slot'>
+            <div className="mentor-avatar-slot">
+              <img src={mentor.avatar} style={{width:'100%',height:'auto'}} alt="poster" />
+            </div>
+            <div className="mentor-title-slot">
+              <p>
+              {mentor.name}
+              </p>
+            </div>
+          </div>
+  
+          )
+        })
+    }
 
-    <SubmitBtn value="Book"/>
-    </form>
+  <SubmitBtn  value="Next" />
     </div>
+    </>
   )
 }
 

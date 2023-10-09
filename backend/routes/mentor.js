@@ -1,5 +1,5 @@
 const express = require('express');
-const { createMentor, updateMentor, removeMentor, searchMentor, getLatestMentors, getSingleMentor } = require('../controller/mentor');
+const { createMentor, updateMentor, removeMentor, searchMentor, getLatestMentors, getSingleMentor, getAlllMentors } = require('../controller/mentor');
 const { uploadImage } = require('../middleware/multer');
 const { mentorInfoValidator, validate } = require('../middleware/validator');
 const { isAuth, isAdmin } = require('../middleware/auth');
@@ -49,6 +49,11 @@ router.get(
 router.get(
     '/single/:id', 
     getSingleMentor
+);
+
+router.get(
+    '/all', 
+    getAlllMentors
 );
 
 module.exports = router
