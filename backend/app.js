@@ -25,13 +25,15 @@ const newsLetterRouter = require('./routes/newsLetter');
 const userRouter = require('./routes/user');
 const mentorRouter = require('./routes/mentor');
 const coursesRouter = require('./routes/courses');
+const userAccountSettings = require('./routes/userAccountSettings');
 const { handleNotFound } = require('./utils/helper');
 
 //prefix Api
 app.use('/api/user', userRouter);
 app.use('/api/mentor', mentorRouter);
 app.use('/api/courses', coursesRouter);
-app.use('/api/newsletter/',newsLetterRouter);
+app.use('/api/newsletter',newsLetterRouter);
+app.use('/api/setting',userAccountSettings);
 
 
 app.use('/*',handleNotFound)

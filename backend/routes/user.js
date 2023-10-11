@@ -1,5 +1,5 @@
 const express = require('express');
-const { create, verifyEmail, reSendEmailVerificationToekn, forgetPassword, sendResetPasswordTokenStatus, resetPassword, signIn } = require('../controller/user');
+const { create, verifyEmail, reSendEmailVerificationToekn, forgetPassword, sendResetPasswordTokenStatus, resetPassword, signIn, permanantDeleteAccount } = require('../controller/user');
 const { isValidPasswordResetToken } = require('../middleware/user');
 const { userVaidator, validate, validatePassword, signInValidator } = require('../middleware/validator');
 const { isAuth } = require('../middleware/auth');
