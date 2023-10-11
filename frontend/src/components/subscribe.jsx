@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { subscriToNewsLetter } from '../apis/subscribe';
 import { isValidEmail } from '../utils/helper';
 import { useNotification } from '../hooks';
+import {AiOutlineLoading} from 'react-icons/ai'
 
 
 const validateUserInfo = ({email}) =>{
@@ -14,6 +15,7 @@ const validateUserInfo = ({email}) =>{
 
 const Subscribe = () => {
     const { updateNotification } = useNotification();
+    const [isLoading, setIsLoading] = useState(false);
     const [userEmail, setUserEmail] = useState({
         email : "",
     })
@@ -25,11 +27,21 @@ const Subscribe = () => {
 
     const handleEmailInput = async(e) =>{ 
         e.preventDefault()
+        setIsLoading(true);
         const {ok, error} = validateUserInfo(userEmail)
-        if(!ok) return updateNotification("error",error);
+        if(!ok){
+          setIsLoading(false);
+          return updateNotification("error",error);
+        } 
 
         const result = await subscriToNewsLetter(userEmail);
-        if(result.error) return updateNotification("warning",result.error);
+        setIsLoading(false);
+
+        if(result.error){
+          setIsLoading(false);
+          return updateNotification("warning",result.error);
+        }
+
 
         return updateNotification('success',"You have been Subscribed!")
     }
@@ -45,7 +57,9 @@ const Subscribe = () => {
         onChange={handleChange}
         />
 
-        <button type="submit">Subscribe</button>
+        {
+          isLoading ? (<AiOutlineLoading className='loadSubBtn'/>) : (<button className='subBtn' type="submit" >Subscribe</button>)
+        }
       </form>
     </>
   )

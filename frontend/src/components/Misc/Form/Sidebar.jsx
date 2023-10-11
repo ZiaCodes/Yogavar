@@ -32,20 +32,38 @@ const Sidebar = () => {
             {
                 isLoggedIn ? (<li className='user-name'>{userName}</li>) : (<li className='user-name'> Hello User</li>)
             }
-            <li><ImProfile/> My Profile</li>
-            <li><RiMoneyDollarCircleFill/> Subscription</li>
+            {
+                isLoggedIn ? (
+                    <>
+                    <li><ImProfile/> My Profile</li>
+                    <li><RiMoneyDollarCircleFill/> Subscription</li>
+                    </>
+                ): null
+            }
             <li><GrYoga/> Yoga Life</li>
             <li><GiSunPriest/> Asaans</li>
-            <li><MdWorkHistory/> History</li>
-            <li><FaChalkboardTeacher/> Mentors</li>
-            <li><MdClass/> Class</li>
+            {
+                isLoggedIn ? (
+                    <>
+                    <li><MdWorkHistory/> History</li>
+                    <li><FaChalkboardTeacher/> Mentors</li>
+                    <li><MdClass/> Class</li>
+                    </>
+                ): null
+            }
             <li><MdCalendarMonth/> Monthly Plan</li>
             <li><MdCalendarMonth/> Annual Plan</li>
             <li><MdSavings/> Benefits</li>
             <li><MdCardMembership/> Membership</li>
-            <li><GiMeditation/> Meditation</li>
-            <li><GrResources/>Online Resources</li>
-            <li><GrArticle/> Articles</li>
+            {
+                isLoggedIn ? (
+                    <>
+                    <li><GiMeditation/> Meditation</li>
+                    <li><GrResources/>Online Resources</li>
+                    <li><GrArticle/> Articles</li>
+                    </>
+                ) : null
+            }
             <li><GrDocumentTime/> Book Your Slot</li>
             <li><MdEmojiObjects /> Demo</li>
 

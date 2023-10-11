@@ -1,5 +1,6 @@
 const NewsLetter = require("../models/newsLetter");
 const { generateMailTransporter } = require("../utils/email");
+const { WelcomeSubEmailTemplate } = require("../utils/emailTemplate");
 const { sendError } = require("../utils/helper");
 
 exports.createEmailNewsLetter = async(req, res) =>{
@@ -20,66 +21,7 @@ exports.createEmailNewsLetter = async(req, res) =>{
         from: "verification@yogavar.com",
         to: newSubscriber.email,
         subject: "Welcome to Yogavaar NewsLetter",
-        html:`
-        <body 
-        style="background-color: #f1f1f1;
-        font-family: 'Courier New', Courier, monospace;
-        text-align: center;"
-        >
-        <div>
-            <div>
-                <img 
-                style="width: 400px;
-                height: auto;
-                border-radius: 5px;"
-                src="https://cdn.pixabay.com/photo/2020/08/22/12/36/yoga-5508336__340.png" 
-                alt="poster">
-            </div>
-
-        </div>
-        <div>
-            <h1 style="font-size: 1.5rem;
-                text-transform: uppercase;">
-                Yogavaar Newsletter 
-            </h1>
-            <p 
-            style="font-size: 0.8rem;"
-            >Where we will sent you weekly Email,
-            </p>
-            <p 
-            style="font-size: 0.8rem;"
-            > about our product promotions,
-            </p>
-            <p> Discount and many more . </p>
-        </div>
-        <br>
-        <div>
-            <p>
-               <a style="text-decoration: none;
-               background-color: crimson;
-               padding: 10px;
-               color: #fff;
-               border-radius: 3px;" 
-               href="https://yogavar.vercel.app/">
-                Explore Now
-                </a>
-            </p>
-            <br>
-            <p style="color:rgba(0, 0, 0, 0.46)">Thank you</p>
-            <p style="color:rgba(0, 0, 0, 0.46)">Team Yogavar</p>
-        </div>
-
-        <br> <br>
-        
-        <p 
-        style="font-size: 0.4rem;opacity: 0.2;padding:5px"
-        > Don't want to receive such Emails?
-        <br>
-        <a style="color:"#fff" href="https://yogavar.vercel.app/newsLetter/unsubscribe">Unscribe </a>
-        </p>
-
-</body>
-        `,
+        html:WelcomeSubEmailTemplate(),
     });
 
 

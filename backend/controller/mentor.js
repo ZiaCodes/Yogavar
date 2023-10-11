@@ -115,3 +115,10 @@ exports.getSingleMentor = async(req,res) =>{
     res.json(formateMentor(mentor));
 
 }
+
+exports.getAlllMentors = async(req, res) =>{
+    const result = await Mentor.find();
+
+    const mentors = result.map(mentor => formateMentor(mentor))
+    res.json(mentors)
+}

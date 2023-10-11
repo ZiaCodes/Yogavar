@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const genres = require('../utils/genres')
 
+
 const courseSchema = mongoose.Schema({
     title: {
         type: String,
