@@ -124,9 +124,13 @@ and we are constantly be adding more features in the near future. You may also s
 ### Routes for Account Settings
 
 - [/api/setting/delete-account]() - for permanantly deleting account.
-- [/api/setting//request-your-personal-data]() - for generating personal data that has been stored on the server.
+- [/api/setting/request-your-personal-data]() - for generating personal data that has been stored on the server.
 
-<br>
+### Find it on Swagger for detailed Documentation
+
+- Still under process, will add every details very soon
+- Visit from Here : <a herf="https://yogavar-services.onrender.com/yogavar-swagger/api-docs/">Yogavar Rest API on Swagger </a>
+
 ## Backend Large-Resources Upload Api Architecture
 
 <p align="center" >
