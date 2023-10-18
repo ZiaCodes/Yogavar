@@ -28,12 +28,20 @@ const coursesRouter = require('./routes/courses');
 const userAccountSettings = require('./routes/userAccountSettings');
 const { handleNotFound } = require('./utils/helper');
 
-//prefix Api
+//prefix Api 
 app.use('/api/user', userRouter);
 app.use('/api/mentor', mentorRouter);
 app.use('/api/courses', coursesRouter);
 app.use('/api/newsletter',newsLetterRouter);
 app.use('/api/setting',userAccountSettings);
+
+
+// Swagger UI Doc set-up 
+fs = require('fs')
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swaggerApi/swagger.json');
+const customCss = fs.readFileSync((process.cwd()+"/swaggerApi/swagger.css"), 'utf8');
+app.use('/yogavar-swagger/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {customCss}));
 
 
 app.use('/*',handleNotFound)

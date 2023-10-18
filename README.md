@@ -124,9 +124,14 @@ and we are constantly be adding more features in the near future. You may also s
 ### Routes for Account Settings
 
 - [/api/setting/delete-account]() - for permanantly deleting account.
-- [/api/setting//request-your-personal-data]() - for generating personal data that has been stored on the server.
+- [/api/setting/request-your-personal-data]() - for generating personal data that has been stored on the server.
 
-<br>
+### Find it on Swagger for detailed Documentation
+
+- Still under process, will add every details very soon
+- Click below to visit -
+  <a herf="https://yogavar-services.onrender.com/yogavar-swagger/api-docs/">Yogavar Rest API on Swagger </a>
+
 ## Backend Large-Resources Upload Api Architecture
 
 <p align="center" >
@@ -149,7 +154,7 @@ I have used Youtube video upload design to implement large resources upload feat
 
 <p align="center">
   <a href="#">
-    <img src="https://github.com/ZiaCodes/Yogavar/blob/a8a470d8e59c695afbd25f59a714ad924c0dd78c/public/Erdiagram.png" alt="Basic ER Diagram for different table , for more information, see schema inside /backend/models/" >
+    <img src="./public/Erdiagram.png" alt="Basic ER Diagram for different table , for more information, see schema inside /backend/models/" >
   </a>
 </p>
 
