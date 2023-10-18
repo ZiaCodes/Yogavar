@@ -154,7 +154,7 @@ I have used Youtube video upload design to implement large resources upload feat
 
 <p align="center">
   <a href="#">
-    <img src="./public/Erdiagram.png" alt="Basic ER Diagram for different table , for more information, see schema inside /backend/models/" >
+    <img src="backend/ERDiagram.png" alt="Basic ER Diagram for different table , for more information, see schema inside /backend/models/" >
   </a>
 </p>
 
