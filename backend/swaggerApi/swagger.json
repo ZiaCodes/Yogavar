@@ -12,7 +12,7 @@
         }
     },
     "schemes": ["https"],
-    "host": "https://yogavar-services.onrender.com",
+    "host": "yogavar-services.onrender.com",
     "basePath": "/api",
     "paths" : {
         "/user/create" : {
@@ -29,10 +29,9 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "task" : {
                                     "type": "object",
                                     "$ref": "#/definitions/createNewUser"
-                                } 
+ 
                             }
                         }
                     }
@@ -66,15 +65,13 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "task object",
+                        "description": "Sign In",
                         "required": true,
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "task" : {
                                     "type": "object",
-                                    "$ref": "#/definitions/Task"
-                                } 
+                                    "$ref": "#/definitions/login"
                             }
                         }
                     }
@@ -85,7 +82,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/signInResponse"
                             }
                         }
                     },
@@ -107,7 +104,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "task id that needs to be deleted",
+                        "description": "Email need to be verified via otp",
                         "required": true,
                         "type": "string"
                     },
@@ -121,7 +118,7 @@
                             "properties": {
                                 "task" : {
                                     "type": "object",
-                                    "$ref": "#/definitions/Task"
+                                    "$ref": "#/definitions/emailVerification"
                                 } 
                             }
                         }
@@ -133,7 +130,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/emailVerificationResponse"
                             }
                         }
                     },
@@ -155,25 +152,25 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "task id that needs to be deleted",
+                        "description": "Resand Email OTP/Link Again",
                         "required": true,
                         "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation",
+                        "description": "Resend Email OTP for verification",
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/ResandEmailVerification"
                             }
                         }
                     },
                     "400": {
                         "description": "Invalid status value",
                         "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
+                            "$ref": "#/definitions/emailVerificationResponse"
                         }
                     }
                 }
@@ -181,14 +178,14 @@
         },
         "/user/forget-password" : {
             "post" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
+                "summary" : "Forget Password",
+                "description": "Forget Password Route for resetting passward",
                 "produces": ["application/json"],
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "task id that needs to be deleted",
+                        "description": "Reset passward need to be set",
                         "required": true,
                         "type": "string"
                     }
@@ -199,14 +196,14 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/forgetPassword"
                             }
                         }
                     },
                     "400": {
                         "description": "Invalid status value",
                         "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
+                            "$ref": "#/definitions/emailVerificationResponse"
                         }
                     }
                 }
@@ -756,6 +753,66 @@
                 }
             }
         },
+        "signInResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                     "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "jwtToken": {
+                    "type": "string"
+                },
+                "isVerified": {
+                    "type": "boolean"
+                }
+
+            }
+        },
+        "login": {
+            "type": "object",
+            "properties": {
+                "email": {
+                     "type": "integer"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "emailVerification": {
+            "type": "object",
+            "properties": {
+                "userId": {
+                     "type": "integer"
+                },
+                "OTP": {
+                    "type": "integer"
+                }
+            }
+        },
+        "emailVerificationResponse":{
+            "type":"object",
+            "properties":{
+                "message":"string"
+            }
+        },
+        "ResandEmailVerification":{
+            "type":"object",
+            "properties":{
+                "userId":{
+                    "type":"integer"
+                }
+            }
+        },
         "Task": {
             "type": "object",
             "properties": {
@@ -799,13 +856,18 @@
                 }
             }
         },
+        "forgetPassword":{
+            "type":"object",
+            "properties":{
+                "email":{
+                    "type":"string"
+                }
+            }
+        },
         "InvalidResponse": {
             "type": "object",
             "properties": {
-                "statusCode": {
-                    "type": "string"
-                },
-                "message": {
+                "Error.message": {
                     "type": "string"
                 }
             }
