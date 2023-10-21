@@ -127,10 +127,11 @@ and we are constantly be adding more features in the near future. You may also s
 - [/api/setting/request-your-personal-data]() - for generating personal data that has been stored on the server.
 
 ### Find it on Swagger for detailed Documentation
-
-- Still under process, will add every details very soon
-- Click below to visit -
-  <a herf="https://yogavar-services.onrender.com/yogavar-swagger/api-docs/">Yogavar Rest API on Swagger </a>
+<p align="left">
+  <a href="https://yogavar-services.onrender.com/yogavar-swagger/api-docs/">
+    Yogavar Rest API on Swagger
+  </a>
+</p> 
 
 ## Backend Large-Resources Upload Api Architecture
 
