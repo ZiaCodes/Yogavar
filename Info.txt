@@ -1,0 +1,8 @@
+Main branch - Master [Protected]
+Stagging Branch - Stagging-master
+
+Production Branch - Main/Master Branch 
+(git checkout main)
+
+Developement Branch - Stagging-master Branch 
+(git checkout Stagging-master)
