@@ -387,15 +387,15 @@ input::-webkit-inner-spin-button {
         width: 320px; 
         height: 240px; 
         padding: 30px; 
-    }
-
+  }
+  
     .hero-title > p {
         font-size: 24px; 
-    }
-
+  }
+  
     .hero-title > p:nth-child(2) {
         font-size: 26px; 
-    }
+  }
   }
 
   .section-info{
@@ -755,76 +755,146 @@ th,td{
   text-transform: capitalize;
 }
 
-th{
-  display: none;
-}
-table,tbody{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0.5px solid #00000046;
-}
+@media (max-width: 650px) {
+  th{
+    display: none;
+  }
+  table,tbody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid #00000046;
+  }
 
-.price{
-  font-weight: bolder;
-  font-size: 25px;
-}
+  .price{
+    font-weight: bolder;
+    font-size: 25px;
+  }
 
-td{
-  display: block;
-  padding: 0.5rem 1rem;
-  margin-bottom: 5px;
-  text-align: center;
-}
+  td{
+    display: block;
+    padding: 0.5rem 1rem;
+    margin-bottom: 5px;
+    text-align: center;
+  }
 
-.Annually{
-  background-color: var(--s-clr);
-  color: var(--p-clr);
-}
+  .Annually{
+    background-color: var(--s-clr);
+    color: var(--p-clr);
+  }
 
-td::before{
-  content: attr(data-cell) " ";
-  font-weight: lighter;
-  text-transform: capitalize;
+  td::before{
+    content: attr(data-cell) " ";
+    font-weight: lighter;
+    text-transform: capitalize;
 
-}
+  }
 
-.monthly::before{
-  content: "Monthly Plan";
-  width: 180px;
-  height: 50px;
-  position: absolute;
-  transform: translate(10px,-50px);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--s-clr);
-  font-size: 1rem;
-  font-weight: lighter;
-  text-transform: capitalize;
-    
-}
+  .monthly::before{
+    content: "Monthly Plan";
+    width: 180px;
+    height: 50px;
+    position: absolute;
+    transform: translate(10px,-50px);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--s-clr);
+    font-size: 1rem;
+    font-weight: lighter;
+    text-transform: capitalize;
+      
+  }
 
-.Annually::before{
-  content: "Yearly Plan";
-  width: 180px;
-  height: 50px;
-  position: absolute;
-  transform: translate(10px,-50px);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--s-clr);
-  font-size: 1rem;
-  font-weight: lighter;
-  text-transform: capitalize;
+  .Annually::before{
+    content: "Yearly Plan";
+    width: 180px;
+    height: 50px;
+    position: absolute;
+    transform: translate(10px,-50px);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--s-clr);
+    font-size: 1rem;
+    font-weight: lighter;
+    text-transform: capitalize;
+  }
 }
 
 @media (min-width: 768px) {
+  th{
+    display: none;
+  }
+  table,tbody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid #00000046;
+  }
+  
+  .price{
+    font-weight: bolder;
+    font-size: 25px;
+  }
+  
+  td{
+    display: block;
+    padding: 0.5rem 1rem;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  
+  .Annually{
+    background-color: var(--s-clr);
+    color: var(--p-clr);
+  }
+  
+  td::before{
+    content: attr(data-cell) " ";
+    font-weight: lighter;
+    text-transform: capitalize;
+  
+  }
+  
+  .monthly::before{
+    content: "Monthly Plan";
+    width: 180px;
+    height: 50px;
+    position: absolute;
+    transform: translate(10px,-50px);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--s-clr);
+    font-size: 1rem;
+    font-weight: lighter;
+    text-transform: capitalize;
+      
+  }
+  
+  .Annually::before{
+    content: "Yearly Plan";
+    width: 180px;
+    height: 50px;
+    position: absolute;
+    transform: translate(10px,-50px);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--s-clr);
+    font-size: 1rem;
+    font-weight: lighter;
+    text-transform: capitalize;
+  }
   .monthly::before, .Annually::before {
       font-size: 1.5rem; 
   }
