@@ -11,15 +11,44 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
-    "schemes": ["https"],
+    "schemes": [
+        "https"
+    ],
     "host": "yogavar-services.onrender.com",
     "basePath": "/api",
-    "paths" : {
-        "/user/create" : {
-            "post" : {
-                "summary" : "for Creating a new user",
+    "tags": [
+        {
+            "name": "User",
+            "description": "user endpoints"
+        },
+        {
+            "name": "Setting",
+            "description": "setting endpoints"
+        },
+        {
+            "name": "Mentor",
+            "description": "mentor endpoints"
+        },
+        {
+            "name": "Course",
+            "description": "course endpoints"
+        },
+        {
+            "name": "Newsletter",
+            "description": "newsletter endpoints"
+        }
+    ],
+    "paths": {
+        "/user/create": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "for Creating a new user",
                 "description": "creating a new user",
-                "produces": ["application/json"],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "in": "body",
@@ -27,12 +56,7 @@
                         "description": "Create New user",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                    "type": "object",
-                                    "$ref": "#/definitions/createNewUser"
- 
-                            }
+                            "$ref": "#/definitions/createNewUser"
                         }
                     }
                 ],
@@ -40,10 +64,7 @@
                     "200": {
                         "description": "successful operation",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/createNewUserResponse"
-                            }
+                            "$ref": "#/definitions/createNewUserResponse"
                         }
                     },
                     "400": {
@@ -51,39 +72,45 @@
                         "schema": {
                             "$ref": "#/definitions/InvalidResponse"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
                     }
                 }
             }
         },
-        "/user/sign-in" : {
-            "post" : {
-                "summary" : "Sign In",
+        "/user/sign-in": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Sign In",
                 "description": "Login into the application",
-                "produces": ["application/json"],
-                "consumes": ["application/json"],
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
                         "description": "Sign In",
-                        "required": true,
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                    "type": "object",
-                                    "$ref": "#/definitions/login"
-                            }
-                        }
+                            "$ref": "#/definitions/login"
+                        },
+                        "required": true
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/signInResponse"
-                            }
+                            "$ref": "#/definitions/signInResponse"
                         }
                     },
                     "400": {
@@ -91,15 +118,32 @@
                         "schema": {
                             "$ref": "#/definitions/InvalidResponse"
                         }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
                     }
                 }
             }
         },
-        "/user/verify-email" : {
-            "post" : {
-                "summary" : "Email Verification",
+        "/user/verify-email": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Email Verification",
                 "description": "OTP validation via email",
-                "produces": ["application/json"],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "id",
@@ -114,13 +158,7 @@
                         "description": "task object",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "task" : {
-                                    "type": "object",
-                                    "$ref": "#/definitions/emailVerification"
-                                } 
-                            }
+                            "$ref": "#/definitions/emailVerification"
                         }
                     }
                 ],
@@ -128,10 +166,7 @@
                     "200": {
                         "description": "successful operation",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/emailVerificationResponse"
-                            }
+                            "$ref": "#/definitions/emailVerificationResponse"
                         }
                     },
                     "400": {
@@ -139,15 +174,32 @@
                         "schema": {
                             "$ref": "#/definitions/InvalidResponse"
                         }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
                     }
                 }
             }
         },
-        "/user/resend-email-verification-token" : {
-            "post" : {
-                "summary" : "Resend Email Token",
+        "/user/resend-email-verification-token": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Resend Email Token",
                 "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "id",
@@ -161,64 +213,627 @@
                     "200": {
                         "description": "Resend Email OTP for verification",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/ResandEmailVerification"
-                            }
+                            "$ref": "#/definitions/SuccessMessageResponse"
                         }
                     },
                     "400": {
                         "description": "Invalid status value",
                         "schema": {
-                            "$ref": "#/definitions/emailVerificationResponse"
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
                         }
                     }
                 }
             }
         },
-        "/user/forget-password" : {
-            "post" : {
-                "summary" : "Forget Password",
+        "/user/forget-password": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Forget Password",
                 "description": "Forget Password Route for resetting passward",
-                "produces": ["application/json"],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "path",
+                        "name": "body",
+                        "in": "body",
                         "description": "Reset passward need to be set",
                         "required": true,
-                        "type": "string"
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "format": "email"
+                            }
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/forgetPassword"
+                            "$ref": "#/definitions/SuccessMessageResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/verify-pass-reset-token": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Verify the password reset token",
+                "description": "Verify the password reset token",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "User id & token that needs to be validated",
+                        "required": true,
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string",
+                                "required": true
+                            },
+                            "token": {
+                                "type": "string",
+                                "required": true
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "valid": {
+                                    "type": "boolean"
+                                }
                             }
                         }
                     },
                     "400": {
                         "description": "Invalid status value",
                         "schema": {
-                            "$ref": "#/definitions/emailVerificationResponse"
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
                         }
                     }
                 }
             }
         },
-        "/user/verify-pass-reset-token" : {
-            "post" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
+        "/user/reset-password": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Reset password",
+                "description": "Reset password request",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "New password & user id that needs to be validated",
+                        "required": true,
+                        "type": "object",
+                        "properties": {
+                            "newPassword": {
+                                "type": "string",
+                                "format": "password",
+                                "required": true
+                            },
+                            "userId": {
+                                "type": "string",
+                                "required": true
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessMessageResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/is-auth": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Verify authentication",
+                "description": "Verify valid user or not",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "user": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "format": "email"
+                                        },
+                                        "isVerified": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/request-your-personal-data": {
+            "get": {
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "Request for personal data",
+                "description": "Get personal data",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "user id",
+                        "required": true,
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessMessageResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/setting/delete-account": {
+            "delete": {
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "Delete personal account",
+                "description": "Delete personal account by user id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "user id to delete account",
+                        "required": true,
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessMessageResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/mentor/create": {
+            "post": {
+                "tags": [
+                    "Mentor"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": [
+                            "admin"
+                        ]
+                    }
+                ],
+                "summary": "Create new mentor",
+                "description": "Create  a new mentor account",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "description": "Name of the mentor"
+                    },
+                    {
+                        "name": "about",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "description": "About the mentor"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "male",
+                            "female"
+                        ],
+                        "description": "Gender of the mentor"
+                    },
+                    {
+                        "name": "avatar",
+                        "in": "formData",
+                        "required": true,
+                        "type": "file",
+                        "format": "binary",
+                        "description": "Avatar image of the mentor"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/mentorResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/mentor/update/:mentorId": {
+            "post": {
+                "tags": [
+                    "Mentor"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": [
+                            "admin"
+                        ]
+                    }
+                ],
+                "summary": "Update mentor account",
+                "description": "body data to update mentor account",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "task id that needs to be deleted",
+                        "description": "mentor id of the mentor to be updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "type": "string",
+                        "description": "Name of the mentor"
+                    },
+                    {
+                        "name": "about",
+                        "in": "formData",
+                        "type": "string",
+                        "description": "About the mentor"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "formData",
+                        "type": "string",
+                        "enum": [
+                            "male",
+                            "female"
+                        ],
+                        "description": "Gender of the mentor"
+                    },
+                    {
+                        "name": "avatar",
+                        "in": "formData",
+                        "type": "file",
+                        "format": "binary",
+                        "description": "Avatar image of the mentor"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/mentorResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/mentor/:mentorId": {
+            "delete": {
+                "tags": [
+                    "Mentor"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": [
+                            "admin"
+                        ]
+                    }
+                ],
+                "summary": "Remove a mentor",
+                "description": "Remove a mentor by mentor id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "mentor id of the mentor to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessMessageResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/mentor/search": {
+            "get": {
+                "tags": [
+                    "Mentor"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": [
+                            "admin"
+                        ]
+                    }
+                ],
+                "summary": "Search mentor",
+                "description": "Search mentor by name",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "mentor name to search for",
                         "required": true,
                         "type": "string"
                     }
@@ -229,7 +844,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/mentorResponse"
                             }
                         }
                     },
@@ -238,20 +853,85 @@
                         "schema": {
                             "$ref": "#/definitions/InvalidResponse"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
                     }
                 }
             }
         },
-        "/user/reset-password" : {
-            "post" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
+        "/mentor/latest-uploads": {
+            "get": {
+                "tags": [
+                    "Mentor"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": [
+                            "admin"
+                        ]
+                    }
+                ],
+                "summary": "Get latest mentors",
+                "description": "Get latest uploaded mentors",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/mentorResponse"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/mentor/single/:id": {
+            "get": {
+                "tags": [
+                    "Mentor"
+                ],
+                "summary": "Get a single mentor data",
+                "description": "get a single mentor details",
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "task id that needs to be deleted",
+                        "description": "mentor id that needs to be found",
                         "required": true,
                         "type": "string"
                     }
@@ -260,10 +940,7 @@
                     "200": {
                         "description": "successful operation",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
+                            "$ref": "#/definitions/mentorResponse"
                         }
                     },
                     "400": {
@@ -271,23 +948,31 @@
                         "schema": {
                             "$ref": "#/definitions/InvalidResponse"
                         }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
                     }
                 }
             }
         },
-        "/user/is-auth" : {
-            "get" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
+        "/mentor/all": {
+            "get": {
+                "tags": [
+                    "Mentor"
+                ],
+                "summary": "Get all mentors",
+                "description": "Get all mentors information",
+                "produces": [
+                    "application/json"
                 ],
                 "responses": {
                     "200": {
@@ -295,7 +980,61 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/todosResponse"
+                                "$ref": "#/definitions/mentorResponse"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/courses/upload-course": {
+            "post": {
+                "tags": [
+                    "Course"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": [
+                            "admin"
+                        ]
+                    }
+                ],
+                "summary": "Upload course video",
+                "description": "upload video file for course",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "File to upload",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "url": {
+                                    "type": "string",
+                                    "format": "url"
+                                },
+                                "public_id": {
+                                    "type": "string"
+                                }
                             }
                         }
                     },
@@ -304,446 +1043,323 @@
                         "schema": {
                             "$ref": "#/definitions/InvalidResponse"
                         }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
                     }
                 }
             }
         },
-        "/setting/request-your-personal-data" : {
-            "get" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
+        "/courses/create": {
+            "post": {
+                "tags": [
+                    "Course"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": [
+                            "admin"
+                        ]
+                    }
+                ],
+                "summary": "Create a new course",
+                "description": "create a brand new course",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
+                        "name": "title",
+                        "in": "formData",
+                        "type": "string",
                         "required": true,
-                        "type": "string"
+                        "description": "Title of the course"
+                    },
+                    {
+                        "name": "storyLine",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true,
+                        "description": "Description of the course"
+                    },
+                    {
+                        "name": "director",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true,
+                        "description": "ID of the director (Mentor)"
+                    },
+                    {
+                        "name": "releaseDate",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true,
+                        "description": "Release date of the course"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true,
+                        "enum": [
+                            "public",
+                            "private"
+                        ],
+                        "description": "Status of the course (public or private)"
+                    },
+                    {
+                        "name": "type",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true,
+                        "description": "Type of the course"
+                    },
+                    {
+                        "name": "genres",
+                        "in": "formData",
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "Action",
+                                "Comedy",
+                                "Drama",
+                                "Sci-Fi",
+                                "Other"
+                            ]
+                        },
+                        "required": true,
+                        "description": "Genres of the course"
+                    },
+                    {
+                        "name": "tags",
+                        "in": "formData",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "description": "Tags related to the course"
+                    },
+                    {
+                        "name": "cast",
+                        "in": "formData",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "mentor": {
+                                    "type": "string",
+                                    "description": "ID of the mentor in the cast"
+                                },
+                                "roleAs": {
+                                    "type": "string",
+                                    "description": "Role of the mentor in the course"
+                                },
+                                "leadActor": {
+                                    "type": "boolean",
+                                    "description": "Is the mentor a lead actor in the course"
+                                }
+                            }
+                        },
+                        "required": true,
+                        "description": "Cast information"
+                    },
+                    {
+                        "name": "writers",
+                        "in": "formData",
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "description": "ID of the mentor as a writer"
+                        },
+                        "required": true,
+                        "description": "Writers of the course"
+                    },
+                    {
+                        "name": "poster",
+                        "in": "formData",
+                        "type": "file",
+                        "required": true,
+                        "description": "Poster image"
+                    },
+                    {
+                        "name": "trailer",
+                        "in": "formData",
+                        "type": "object",
+                        "properties": {
+                            "url": {
+                                "type": "string",
+                                "description": "URL of the trailer video"
+                            },
+                            "public_id": {
+                                "type": "string",
+                                "description": "Public ID of the trailer video"
+                            }
+                        },
+                        "required": true,
+                        "description": "Trailer video details"
+                    },
+                    {
+                        "name": "language",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true,
+                        "description": "Language of the course"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/newsletter/create": {
+            "post": {
+                "tags": [
+                    "Newsletter"
+                ],
+                "summary": "Create a newsletter",
+                "description": "create a brand new newsletter",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "email to attach the newsletter be subscribed",
+                        "required": true,
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "format": "email"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/SuccessMessageResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ServerErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/newsletter/unsubscribe": {
+            "post": {
+                "tags": [
+                    "Newsletter"
+                ],
+                "summary": "Unsubscribe from newsletter",
+                "description": "unsubscribe from newsletter subscription",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "email that is to be unsubscribed",
+                        "required": true,
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "format": "email"
+                            }
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
+                            "$ref": "#/definitions/SuccessMessageResponse"
                         }
                     },
-                    "400": {
-                        "description": "Invalid status value",
+                    "404": {
+                        "description": "Resource not found",
                         "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/setting/delete-account" : {
-            "delete" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
+                            "$ref": "#/definitions/NotFoundResponse"
                         }
                     },
-                    "400": {
-                        "description": "Invalid status value",
+                    "500": {
+                        "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/mentor/create" : {
-            "post" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/mentor/update/:mentorId" : {
-            "post" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/mentor/:mentorId" : {
-            "delete" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/mentor/search" : {
-            "get" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/mentor/latest-uploads" : {
-            "get" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/mentor/single/:id" : {
-            "get" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/mentor/all" : {
-            "get" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/courses/upload-course" : {
-            "post" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/courses/create" : {
-            "post" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/newsletter/create" : {
-            "post" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/newsletter/unsubscribe" : {
-            "post" : {
-                "summary" : "Resend Email Token",
-                "description": "Resend Email OTP for verification",
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "task id that needs to be deleted",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/todosResponse"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid status value",
-                        "schema": {
-                            "$ref": "#/definitions/InvalidResponse"
+                            "$ref": "#/definitions/ServerErrorResponse"
                         }
                     }
                 }
             }
         }
-    }, 
+    },
     "definitions": {
         "createNewUserResponse": {
             "type": "object",
             "properties": {
                 "id": {
-                     "type": "integer"
+                    "type": "integer"
                 },
                 "name": {
                     "type": "string"
@@ -757,7 +1373,7 @@
             "type": "object",
             "properties": {
                 "id": {
-                     "type": "integer"
+                    "type": "integer"
                 },
                 "name": {
                     "type": "string"
@@ -774,42 +1390,71 @@
                 "isVerified": {
                     "type": "boolean"
                 }
-
             }
         },
         "login": {
             "type": "object",
             "properties": {
                 "email": {
-                     "type": "integer"
+                    "type": "integer"
                 },
                 "password": {
                     "type": "string"
                 }
-            }
+            },
+            "required": [
+                "email",
+                "password"
+            ]
         },
         "emailVerification": {
             "type": "object",
             "properties": {
                 "userId": {
-                     "type": "integer"
+                    "type": "integer"
                 },
                 "OTP": {
                     "type": "integer"
                 }
+            },
+            "required": [
+                "userId",
+                "OTP"
+            ]
+        },
+        "emailVerificationResponse": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        },
+                        "token": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string"
+                },
+                "isVerified": {
+                    "type": "boolean"
+                }
             }
         },
-        "emailVerificationResponse":{
-            "type":"object",
-            "properties":{
-                "message":"string"
-            }
-        },
-        "ResandEmailVerification":{
-            "type":"object",
-            "properties":{
-                "userId":{
-                    "type":"integer"
+        "ResandEmailVerification": {
+            "type": "object",
+            "properties": {
+                "userId": {
+                    "type": "integer"
                 }
             }
         },
@@ -831,12 +1476,10 @@
             "type": "object",
             "properties": {
                 "name": {
-                    "type": "string",
-                    "required": true
+                    "type": "string"
                 },
                 "email": {
-                    "type": "string",
-                    "required": true
+                    "type": "string"
                 },
                 "phoneNumber": {
                     "type": "integer"
@@ -851,16 +1494,50 @@
                     "type": "string"
                 },
                 "password": {
-                    "type": "string",
-                    "required": true
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "email",
+                "password"
+            ]
+        },
+        "forgetPassword": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
                 }
             }
         },
-        "forgetPassword":{
-            "type":"object",
-            "properties":{
-                "email":{
-                    "type":"string"
+        "mentorResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "about": {
+                    "type": "string",
+                    "format": "text"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "avatar": {
+                    "type": "string",
+                    "format": "url"
+                }
+            }
+        },
+        "SuccessMessageResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
                 }
             }
         },
@@ -871,7 +1548,37 @@
                     "type": "string"
                 }
             }
-
+        },
+        "NotFoundResponse": {
+            "type": "object",
+            "properties": {
+                "Error.message": {
+                    "type": "string"
+                }
+            }
+        },
+        "UnauthorizedResponse": {
+            "type": "object",
+            "properties": {
+                "Error.message": {
+                    "type": "string"
+                }
+            }
+        },
+        "ServerErrorResponse": {
+            "type": "object",
+            "properties": {
+                "Error.message": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "bearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }
