@@ -26,6 +26,7 @@ const userRouter = require('./routes/user');
 const mentorRouter = require('./routes/mentor');
 const coursesRouter = require('./routes/courses');
 const userAccountSettings = require('./routes/userAccountSettings');
+const tslVendor = require('./routes/vendor');
 const { handleNotFound } = require('./utils/helper');
 
 //prefix Api 
@@ -34,6 +35,8 @@ app.use('/api/mentor', mentorRouter);
 app.use('/api/courses', coursesRouter);
 app.use('/api/newsletter',newsLetterRouter);
 app.use('/api/setting',userAccountSettings);
+app.use('/api/vendor',tslVendor);
+
 
 
 // Swagger UI Doc set-up 

@@ -177,6 +177,39 @@ exports.newsLetterValidator = [
         .withMessage("Invalid Emial!"),
 ]
 
+
+exports.vendorValidator = [
+    check('name')
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage("Name can not be empty"),
+
+    check('vendorName')
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage("Vendor Name can not be empty"),
+    
+    check('location')
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage("Location can not be empty"),
+    
+    check('contact')
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage('Contact number can not be empty'),
+
+    check('email')
+        .normalizeEmail()
+        .isEmail()
+        .withMessage("Invalid Emial!")
+]
+
+
 exports.validate = (req, res, next) => {
     const error = validationResult(req).array();
 
