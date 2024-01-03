@@ -33,8 +33,6 @@ exports.unSubscribeNewsLetter = async(req,res) =>{
     const {email} = req.body;
 
     const subscriber = await NewsLetter.findOne({email});
-
-    console.log(subscriber);
     
     if(!subscriber)
         return sendError(res,"Email is not in the subscription list!");
