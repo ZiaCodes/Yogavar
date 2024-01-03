@@ -40,3 +40,16 @@ exports.formateMentor = mentor =>{
         avatar: avatar?.url
     }
 }
+
+exports.formateVendor = vendor =>{
+    const {_id, name, vendorName, location, contact, email} = vendor;
+    return {
+        id : _id,
+        name,
+        vendorName,
+        location,
+        contact,
+        email
+    }
+}
+

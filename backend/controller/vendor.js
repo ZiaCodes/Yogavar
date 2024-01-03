@@ -1,5 +1,5 @@
 const Vendor = require('../models/vendor');
-const { sendError } = require("../utils/helper");
+const { sendError, formateVendor } = require("../utils/helper");
 
 exports.createVendorDetails = async(req, res) =>{
     const {name, vendorName, location, contact, email } = req.body;
@@ -35,4 +35,12 @@ exports.removeVendorDetails = async(req, res) =>{
     await Vendor.findByIdAndDelete(isVendorExist?._id)
 
     res.json({message : "Vendor Removed Successfully!"});
+}
+
+exports.getallvendorDetails = async(req, res) =>{
+
+    const result = await Vendor.find();
+
+    const vendor = result.map(vendor => formateVendor(vendor))
+    res.json(vendor)
 }
