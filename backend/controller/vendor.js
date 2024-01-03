@@ -23,3 +23,16 @@ exports.createVendorDetails = async(req, res) =>{
         email:email
     });
 }
+
+exports.removeVendorDetails = async(req, res) =>{
+    const { email } = req.body;
+
+    const isVendorExist = await Vendor.findOne({ email });
+    
+    if(!isVendorExist) 
+        return sendError(res, "This vendor is does not exist!");
+    
+    await Vendor.findByIdAndDelete(isVendorExist?._id)
+
+    res.json({message : "Vendor Removed Successfully!"});
+}

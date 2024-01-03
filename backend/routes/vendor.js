@@ -1,5 +1,5 @@
 const express = require('express');
-const { createVendorDetails } = require('../controller/vendor');
+const { createVendorDetails,removeVendorDetails } = require('../controller/vendor');
 const { vendorValidator, validate } = require('../middleware/validator');
 const router = express.Router()
 
@@ -8,6 +8,11 @@ router.post(
     vendorValidator,
     validate,
     createVendorDetails
+)
+
+router.post(
+    '/remove',
+    removeVendorDetails
 )
 
 module.exports = router
