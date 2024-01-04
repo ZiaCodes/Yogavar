@@ -210,6 +210,44 @@ exports.vendorValidator = [
 ]
 
 
+exports.validateTickets = [
+
+    check('ticketNo')
+        .trim()
+        .isNumeric()
+        .withMessage('Invalid ticket number')
+        .not()
+        .isEmpty()
+        .withMessage('Ticket number is missing'),
+
+    check('age')
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage('Age is missing.'),
+
+    check('team')
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage('team is missing.'),
+    
+    // reportedOn
+    // ageSlab,
+    // status,
+    // ticketType,
+    // affectedUser,
+    // ticketDetails,
+    // ticketSummary,
+    // workNotes,
+    // commentsWorkNotes,
+    // baseLocation,
+    // locationCode,
+    // myStatus,
+    // myRemarks
+]
+
+
 exports.validate = (req, res, next) => {
     const error = validationResult(req).array();
 

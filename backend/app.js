@@ -27,6 +27,7 @@ const mentorRouter = require('./routes/mentor');
 const coursesRouter = require('./routes/courses');
 const userAccountSettings = require('./routes/userAccountSettings');
 const tslVendor = require('./routes/vendor');
+const tslTickets = require('./routes/tickets');
 const { handleNotFound } = require('./utils/helper');
 
 //prefix Api 
@@ -36,6 +37,7 @@ app.use('/api/courses', coursesRouter);
 app.use('/api/newsletter',newsLetterRouter);
 app.use('/api/setting',userAccountSettings);
 app.use('/api/vendor',tslVendor);
+app.use('/api/tickets',tslTickets);
 
 
 
