@@ -9,6 +9,11 @@ const userSchema = mongoose.Schema({
         trim: true,
         required: true
     },
+    avatar:{
+        type : Object,
+        url: String,
+        public_id : String
+    },
     phoneNumber:{
         type : String,
         trim: true,

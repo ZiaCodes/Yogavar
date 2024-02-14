@@ -213,8 +213,37 @@ exports.signIn = async(req, res) =>{
   const matched = await user.comparePassword(password)
   if(!matched) return sendError(res, "Email and password mismatch");
 
-  const {_id, name, phoneNumber ,gender, age, company, role, isVerified} = user
+  const {_id, name, phoneNumber ,gender, age, company, role,avatar, isVerified} = user
   const jwtToken = jwt.sign({userId: _id}, process.env.JWT_SECRET_TOKEN,{expiresIn:'7d'})
 
-  res.json({user: {id: _id, name, email,phoneNumber, gender, age, company, role, jwtToken, isVerified}})
+  res.json({user: {id: _id, name, email,phoneNumber, gender, age, company, role, avatar, jwtToken, isVerified}})
+}
+
+
+exports.createUserByAdmin = async (req,res) => {
+  const{name, email,phoneNumber,gender,age,company, password} = req.body;
+
+  // checking if same email exist or not
+  const oldUser =await User.findOne({ email });
+  if(oldUser) 
+      return sendError(res, "This email is already in use");
+
+  // creating new User
+  const newUser = new User({name, email, phoneNumber, gender, age, company, password});
+  await newUser.save();
+
+    res.status(201).json({
+      user: {
+        id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
+        
+      }
+    });
+};
+
+exports.getAllUserRegisted = async(req, res) =>{
+  const result = await User.find();
+
+  res.json(result);
 }
