@@ -247,3 +247,28 @@ exports.getAllUserRegisted = async(req, res) =>{
 
   res.json(result);
 }
+
+exports.userActiveStatus = async(req,res) =>{
+
+  const {userId, isOnline} = req.body
+
+  if( !isValidObjectId(userId) )
+    return sendError(res,"Invalid userId!");
+
+  const user = await User.findById(userId)
+
+  if(!user)
+    return sendError(res, "userId not found!",404)
+
+    user.isOnline = isOnline;
+    await user.save()
+
+  res.json({
+    user:{id: user._id, name: user.name, email: user.email},
+    message: `User Online : ${isOnline}`,
+    isVerified: user.isVerified,
+    isOnline: user.isOnline
+  })
+
+
+}
