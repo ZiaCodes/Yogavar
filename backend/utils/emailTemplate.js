@@ -313,11 +313,19 @@ const uniVersalTemplate = (downlaodLink) =>{
 </body>`;
 }
 
+const reminderToVendorTemplate = () =>{
+    return `
+    <div>Hello world</div>
+    `
+}
+
+
 module.exports = {
     WelcomeSubEmailTemplate, 
     generateNewOTPTemplate, 
     verifyEmailTemplate,
     resetPasswordEmailTemplate,
     resetPassSuccessfulEmailTemplate,
-    uniVersalTemplate
+    uniVersalTemplate,
+    reminderToVendorTemplate
 }

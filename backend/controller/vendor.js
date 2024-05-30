@@ -44,3 +44,9 @@ exports.getallvendorDetails = async(req, res) =>{
     const vendor = result.map(vendor => formateVendor(vendor))
     res.json(vendor)
 }
+
+exports.sendReminderToVendor = async (req,res) =>{
+    const { email } = req.body;
+
+    
+}

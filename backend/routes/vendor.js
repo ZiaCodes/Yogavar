@@ -1,5 +1,5 @@
 const express = require('express');
-const { createVendorDetails,removeVendorDetails, getallvendorDetails } = require('../controller/vendor');
+const { createVendorDetails,removeVendorDetails, getallvendorDetails, sendReminderToVendor } = require('../controller/vendor');
 const { vendorValidator, validate } = require('../middleware/validator');
 const router = express.Router()
 
@@ -18,6 +18,11 @@ router.post(
 router.get(
     '/vendorDetails',
     getallvendorDetails
+)
+
+router.post(
+    '/send-reminder',
+    sendReminderToVendor
 )
 
 module.exports = router
