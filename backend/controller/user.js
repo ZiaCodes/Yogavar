@@ -213,10 +213,10 @@ exports.signIn = async(req, res) =>{
   const matched = await user.comparePassword(password)
   if(!matched) return sendError(res, "Email and password mismatch");
 
-  const {_id, name, phoneNumber ,gender, age, company, role,avatar, isVerified} = user
-  const jwtToken = jwt.sign({userId: _id}, process.env.JWT_SECRET_TOKEN,{expiresIn:'7d'})
+  const {_id, pno, name, phoneNumber ,gender, age, company, role, isVerified} = user
+  const jwtToken = jwt.sign({userId: _id}, process.env.JWT_SECRET_TOKEN,{expiresIn:'1d'})
 
-  res.json({user: {id: _id, name, email,phoneNumber, gender, age, company, role, avatar, jwtToken, isVerified}})
+  res.json({user: {id: _id, pno, name, email,phoneNumber, gender, age, company, role, jwtToken, isVerified}})
 }
 
 
