@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
     pno:{
         type : String,
         trim: true,
-        required: true
+        required: false
     },
     phoneNumber:{
         type : String,
