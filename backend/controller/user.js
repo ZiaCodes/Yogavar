@@ -221,7 +221,7 @@ exports.signIn = async(req, res) =>{
 
 
 exports.createUserByAdmin = async (req,res) => {
-  const{name, email,phoneNumber,gender,age,company, password} = req.body;
+  const{name, pno, email,phoneNumber,gender,age,company, password} = req.body;
 
   // checking if same email exist or not
   const oldUser =await User.findOne({ email });
@@ -229,7 +229,7 @@ exports.createUserByAdmin = async (req,res) => {
       return sendError(res, "This email is already in use");
 
   // creating new User
-  const newUser = new User({name, email, phoneNumber, gender, age, company, password});
+  const newUser = new User({name, pno, email, phoneNumber, gender, age, company, password});
   await newUser.save();
 
     res.status(201).json({
@@ -237,7 +237,6 @@ exports.createUserByAdmin = async (req,res) => {
         id: newUser._id,
         name: newUser.name,
         email: newUser.email,
-        
       }
     });
 };
