@@ -34,7 +34,7 @@ exports.create = async (req,res) => {
     var transport = generateMailTransporter();
 
       transport.sendMail({
-        from: "yogavaar@gmail.com",
+        from: "imtsl.communication@gmail.com",
         to: newUser.email,
         subject:"Email Verification",
         html: generateNewOTPTemplate(OTP),
@@ -85,7 +85,7 @@ exports.verifyEmail = async (req,res) =>{
   var transport = generateMailTransporter();
 
   transport.sendMail({
-    from: "verification@yogavar.com",
+    from: "imtsl.communication@gmail.com",
     to: user.email,
     subject: "Welcome to Yogavar",
     html: verifyEmailTemplate(),
@@ -162,7 +162,7 @@ exports.forgetPassword = async(req,res) => {
   var transport = generateMailTransporter();
    
   transport.sendMail({
-    from: "security@yogavar.com",
+    from: "imtsl.communication@gmail.com",
     to: user.email,
     subject:"Reset Password Link",
     html:resetPasswordEmailTemplate(resetPasswordUrl),
@@ -196,7 +196,7 @@ exports.resetPassword = async(req,res) =>{
   var transport = generateMailTransporter();
    
   transport.sendMail({
-    from: "security@yogavar.com",
+    from: "imtsl.communication@gmail.com",
     to: user.email,
     subject:"Password Reset successfully",
     html:resetPassSuccessfulEmailTemplate(),
@@ -231,6 +231,7 @@ exports.createUserByAdmin = async (req,res) => {
   // creating new User
   const newUser = new User({name, pno, email, phoneNumber, gender, age, company, password});
   await newUser.save();
+  
 
     res.status(201).json({
       user: {
