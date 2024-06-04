@@ -319,6 +319,59 @@ const reminderToVendorTemplate = () =>{
     `
 }
 
+const sendEmailNotificationSheetUpdate = () =>{
+    return `
+    <body 
+    style="background-color: #f1f1f1;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;display: flex;justify-content: center;align-items: center;flex-direction: column;height: 100vh;"
+    >
+        <div >
+            <div style="display: flex;justify-content: center; flex-direction: column; align-items: center;">
+                <img 
+                style="width: 50px;
+                height: auto;
+                border-radius: 50%;"
+                src="https://imtsl.vercel.app/favicon/logo.png" 
+                alt="poster">
+                <br>
+                <p style="width: 100%; text-align: center;">
+                    Incident Management to manage your daily tickets and calls from excel sheet.
+                </p>
+            </div>
+
+        </div>
+        <div>
+            <h1 style="font-size: 1.5rem;
+                text-transform: uppercase;">
+                New Notification
+            </h1>
+            <p 
+            style="font-size: 0.8rem;"
+            >New Dashboard sheet has been updated.
+            </p>
+        </div>
+        <br>
+        <div>
+            <p>
+               <a style="text-decoration: none;
+               background-color: crimson;
+               padding: 10px;
+               color: #fff;
+               border-radius: 3px;"
+               href='https://imtsl.vercel.app'>
+                Download Now
+                </a>
+            </p>
+            <br>
+            <p style="color:rgba(0, 0, 0, 0.46)">Thank you</p>
+            <p style="color:rgba(0, 0, 0, 0.46)">IMTSL</p>
+        </div>
+
+</body>
+    `
+}
+
 
 module.exports = {
     WelcomeSubEmailTemplate, 
@@ -327,5 +380,6 @@ module.exports = {
     resetPasswordEmailTemplate,
     resetPassSuccessfulEmailTemplate,
     uniVersalTemplate,
-    reminderToVendorTemplate
+    reminderToVendorTemplate,
+    sendEmailNotificationSheetUpdate
 }
