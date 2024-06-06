@@ -15,5 +15,13 @@ const videoFileFilter = (req, file, cb) =>{
     cb(null, true);
 }
 
+const excelSheetFileFilter = (req, file, cb) =>{
+    if(!file.mimetype.startsWith('xlsx')){
+        cb("Supported only Xlsx file", false)
+    }
+    cb(null, true);
+}
+
 exports.uploadImage = multer({storage, fileFilter: imageFileFilter});
 exports.uploadVideo = multer({storage, fileFilter: videoFileFilter});
+exports.uploadExcelSheet = multer({storage, fileFilter: excelSheetFileFilter});

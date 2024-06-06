@@ -5,15 +5,19 @@ const { generateUserPersonalData } = require("../utils/generateUserData");
 const { sendError } = require("../utils/helper");
 
 exports.permanantDeleteAccount = async(req, res) =>{
-    const {userId} = req.body;
-  
+  const {userId} = req.body;  
+    if(!userId) 
+      return sendError(res, 'userId is missing!')
+
     const userToBeDelete = await User.findById(userId);
+
+    console.log(userToBeDelete)
   
     if(!userToBeDelete) 
       return sendError(res, "user not found!")
   
     await User.findByIdAndDelete(userToBeDelete._id);
-    res.json({message: " Your Account has been deleted successfully."});
+    res.status(200).json({message: "Your Account has been deleted successfully."});
   
   }
 

@@ -2,7 +2,7 @@ const { generateMailTransporter } = require("../utils/email");
 const { sendEmailNotificationSheetUpdate } = require("../utils/emailTemplate");
 
 exports.notificationEmailOnUpdateSheet = async (req,res) =>{
-    const {email} = req.body
+    const {date,time,dashBoardSheet} = req.body
 
 
 
@@ -11,7 +11,7 @@ exports.notificationEmailOnUpdateSheet = async (req,res) =>{
       transport.sendMail({
         from: "imtsl.communication@gmail.com",
         to: email,
-        subject:"Test Mail",
+        subject:"Update: Dashboard Sheet has been updated!",
         html: sendEmailNotificationSheetUpdate(),
       });
 
